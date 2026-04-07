@@ -10,6 +10,8 @@ const countUpItems = document.querySelectorAll("[data-count-up]");
 const serviceShowcase = document.querySelector("[data-service-showcase]");
 const whyUs = document.querySelector(".why-us");
 const brandTransform = document.querySelector("[data-brand-transform]");
+const testimonialSection = document.querySelector("[data-testimonials]");
+const ctaBanner = document.querySelector("[data-cta-banner]");
 const hero = document.querySelector("[data-hero]");
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -593,6 +595,16 @@ if (brandTransform) {
   const dots = brandTransform.querySelectorAll("[data-brand-dot]");
   const prevButton = brandTransform.querySelector("[data-brand-prev]");
   const nextButton = brandTransform.querySelector("[data-brand-next]");
+  const backgroundLayers = brandTransform.querySelectorAll("[data-brand-bg-layer]");
+  const modal = document.querySelector("[data-brand-modal]");
+  const modalImage = modal?.querySelector("[data-brand-modal-image]");
+  const modalTag = modal?.querySelector("[data-brand-modal-tag]");
+  const modalTitle = modal?.querySelector("[data-brand-modal-title]");
+  const modalCopy = modal?.querySelector("[data-brand-modal-copy]");
+  const modalOverview = modal?.querySelector("[data-brand-modal-overview]");
+  const modalList = modal?.querySelector("[data-brand-modal-list]");
+  const modalResult = modal?.querySelector("[data-brand-modal-result]");
+  const modalCloseControls = modal?.querySelectorAll("[data-brand-modal-close]");
   const reducedMotion = reduceMotionQuery.matches;
   const loopBuffer = 2;
   let activeBrandIndex = 0;
@@ -610,28 +622,68 @@ if (brandTransform) {
       title: "Lead flow architecture built around demand quality, not just volume.",
       copy: "We connect Google Ads, Meta Ads, landing pages, and reporting into one system so budget decisions become clearer and conversion efficiency improves.",
       link: "services.html",
-      mediaClass: "brand-transform__placeholder--stack",
+      image: "img/home/gallery/growth.jpg",
+      imageAlt: "Growth systems showcase",
+      overview:
+        "This engagement focused on turning fragmented acquisition into one decision-ready growth system. Search, paid social, landing pages, and attribution had been managed separately, which made budget allocation reactive and lead quality inconsistent.",
+      details: [
+        "Rebuilt campaign structure around offer and demand stage instead of channel silos.",
+        "Aligned Google Ads, Meta retargeting, and landing-page messaging to one qualification path.",
+        "Defined cleaner conversion events in GA4 and GTM so teams could compare traffic quality, not just volume.",
+      ],
+      result:
+        "Leadership got a much clearer view of which traffic sources were actually creating qualified pipeline, which made scaling decisions faster and less political.",
     },
     {
       tag: "Paid Media",
       title: "Search rebuild for a regional service brand.",
       copy: "Intent structure, landing-page alignment, and reporting cleanup that reduced wasted clicks and improved lead fit.",
       link: "service-detail.html",
-      mediaClass: "brand-transform__placeholder--poster",
+      image: "img/home/gallery/paid.jpg",
+      imageAlt: "Paid media showcase",
+      overview:
+        "The account had spend, but not enough control. High-intent and low-intent traffic were blended together, landing pages were too generic, and reporting didn’t explain which ad groups were producing useful sales conversations.",
+      details: [
+        "Separated campaigns by intent depth, service category, and location economics.",
+        "Reworked ad copy and extensions to pre-qualify before the click.",
+        "Matched landing-page structure and proof to the actual search language driving demand.",
+      ],
+      result:
+        "The rebuild reduced wasted search spend and improved the consistency of lead quality coming into the sales team.",
     },
     {
       tag: "Analytics",
       title: "Reporting system rebuilt for leadership visibility.",
       copy: "GA4, GTM, attribution cleanup, and cleaner weekly decision signals for budget and pipeline reviews.",
       link: "services.html",
-      mediaClass: "brand-transform__placeholder--lightbox",
+      image: "img/home/gallery/analytics.jpg",
+      imageAlt: "Analytics showcase",
+      overview:
+        "This case was less about traffic and more about visibility. Teams had data in multiple places, inconsistent definitions of a lead, and too much manual interpretation every time budget questions came up.",
+      details: [
+        "Standardized GA4 events and GTM triggers around meaningful business actions.",
+        "Cleaned up attribution logic so paid, organic, and retargeting could be evaluated on the same framework.",
+        "Built decision-oriented reporting views for leadership, channel owners, and weekly performance reviews.",
+      ],
+      result:
+        "Instead of debating what the numbers meant, teams could review one clearer operating picture and move faster on budget, funnel, and channel priorities.",
     },
     {
       tag: "Creative Testing",
       title: "Offer-led creative system rolled out across paid social.",
       copy: "Creative variations were structured around audience stage, offer clarity, and handoff into landing-page conversion paths.",
       link: "services.html",
-      mediaClass: "brand-transform__placeholder--stack",
+      image: "img/home/gallery/creative.jpg",
+      imageAlt: "Creative testing showcase",
+      overview:
+        "The goal here was to stop treating creative like isolated assets and start treating it like a testing system. Performance had plateaued because ads were being refreshed visually, but not strategically.",
+      details: [
+        "Mapped concepts to cold, warm, and retargeting audiences instead of using one generic narrative.",
+        "Structured tests around hooks, proof, CTA framing, and offer clarity rather than surface-level design swaps.",
+        "Connected each winning concept to the right landing-page path so click-through gains translated into better conversion behavior.",
+      ],
+      result:
+        "Creative output became easier to scale because each new iteration had a clear strategic role inside the acquisition system, not just a visual variation.",
     },
   ];
 
@@ -654,8 +706,8 @@ if (brandTransform) {
       .map(
         (slide, index) => `
           <article class="brand-transform__card" data-brand-slide="${index}">
-            <div class="brand-transform__media brand-transform__media--placeholder">
-              <div class="brand-transform__placeholder ${slide.mediaClass}"></div>
+            <div class="brand-transform__media">
+              <img src="${slide.image}" alt="${slide.imageAlt}" loading="lazy" />
             </div>
             <div class="brand-transform__body">
               <span class="brand-transform__tag">${slide.tag}</span>
@@ -667,6 +719,37 @@ if (brandTransform) {
         `
       )
       .join("");
+  };
+
+  const openBrandModal = (slideIndex) => {
+    if (!modal) return;
+    const slide = brandSlides[slideIndex];
+    if (!slide) return;
+
+    if (modalImage) {
+      modalImage.src = slide.image;
+      modalImage.alt = slide.imageAlt;
+    }
+    if (modalTag) modalTag.textContent = slide.tag;
+    if (modalTitle) modalTitle.textContent = slide.title;
+    if (modalCopy) modalCopy.textContent = slide.copy;
+    if (modalOverview) modalOverview.textContent = slide.overview;
+    if (modalResult) modalResult.textContent = slide.result;
+
+    if (modalList) {
+      modalList.innerHTML = slide.details.map((item) => `<li>${item}</li>`).join("");
+    }
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    body.classList.add("modal-open");
+  };
+
+  const closeBrandModal = () => {
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    body.classList.remove("modal-open");
   };
 
   const updateBrandState = () => {
@@ -702,8 +785,17 @@ if (brandTransform) {
     const slides = track.querySelectorAll("[data-brand-slide]");
     const slide = slides[renderIndex];
     if (!slide) return 0;
-    const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
-    return viewport.clientWidth / 2 - slideCenter;
+    const viewportRect = viewport.getBoundingClientRect();
+    const slideRect = slide.getBoundingClientRect();
+    const viewportStyles = window.getComputedStyle(viewport);
+    const viewportPaddingLeft = parseFloat(viewportStyles.paddingLeft || "0");
+    const viewportPaddingRight = parseFloat(viewportStyles.paddingRight || "0");
+    const visibleCenter =
+      viewportRect.left +
+      viewportPaddingLeft +
+      (viewportRect.width - viewportPaddingLeft - viewportPaddingRight) / 2;
+    const slideCenter = slideRect.left + slideRect.width / 2;
+    return currentTrackX + (visibleCenter - slideCenter);
   };
 
   const applyTrackX = (value) => {
@@ -800,6 +892,7 @@ if (brandTransform) {
     if (!viewport || !track) return;
     if (event.pointerType === "mouse" && event.button !== 0) return;
     if (isAnimating) return;
+    if (event.target.closest("a, button")) return;
 
     isDragging = true;
     dragStartX = event.clientX;
@@ -872,6 +965,17 @@ if (brandTransform) {
 
   if (track) {
     track.addEventListener("click", (event) => {
+      const trigger = event.target.closest(".brand-transform__link");
+      if (trigger) {
+        event.preventDefault();
+        const card = trigger.closest("[data-brand-slide]");
+        const renderIndex = Number.parseInt(card?.dataset.brandSlide || "", 10);
+        if (Number.isFinite(renderIndex)) {
+          openBrandModal(normalizeBrandIndex(renderIndex - loopBuffer));
+        }
+        return;
+      }
+
       const card = event.target.closest("[data-brand-slide]");
       if (!card) return;
       const slideIndex = Number.parseInt(card.dataset.brandSlide || "", 10);
@@ -890,11 +994,223 @@ if (brandTransform) {
   prevButton?.addEventListener("click", () => moveByStep(-1));
   nextButton?.addEventListener("click", () => moveByStep(1));
 
+  modalCloseControls?.forEach((control) => {
+    control.addEventListener("click", closeBrandModal);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal?.classList.contains("is-open")) {
+      closeBrandModal();
+    }
+  });
+
   window.addEventListener("resize", () => {
     stopTrackTween();
     isAnimating = false;
     setTrackPosition(currentRenderIndex, false);
   });
+
+  if (window.gsap && backgroundLayers.length && !reducedMotion) {
+    const gsap = window.gsap;
+    const backgroundMotion = [
+      { baseX: 0, baseY: 0, driftX: 28, driftY: -18, scale: 1.08, rotate: -4, opacity: 0.8, factor: 18 },
+      { baseX: 0, baseY: 0, driftX: -34, driftY: 22, scale: 1.12, rotate: 3.5, opacity: 0.92, factor: 26 },
+      { baseX: 0, baseY: 0, driftX: 20, driftY: 12, scale: 1.05, rotate: -2, opacity: 0.5, factor: 14 },
+    ];
+
+    backgroundLayers.forEach((layer, index) => {
+      const motion = backgroundMotion[index] || backgroundMotion[backgroundMotion.length - 1];
+
+      gsap.to(layer, {
+        x: motion.driftX,
+        y: motion.driftY,
+        scale: motion.scale,
+        rotation: motion.rotate,
+        opacity: motion.opacity,
+        duration: 9.5 + index * 2.1,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+    });
+
+    const pointerXSetters = Array.from(backgroundLayers, (layer, index) =>
+      gsap.quickTo(layer, "x", {
+        duration: 0.9,
+        ease: "power3.out",
+        overwrite: "auto",
+      })
+    );
+    const pointerYSetters = Array.from(backgroundLayers, (layer) =>
+      gsap.quickTo(layer, "y", {
+        duration: 0.9,
+        ease: "power3.out",
+        overwrite: "auto",
+      })
+    );
+
+    brandTransform.addEventListener("pointermove", (event) => {
+      const rect = brandTransform.getBoundingClientRect();
+      const normalizedX = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+      const normalizedY = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+
+      pointerXSetters.forEach((setX, index) => {
+        const motion = backgroundMotion[index] || backgroundMotion[backgroundMotion.length - 1];
+        setX(motion.baseX + normalizedX * motion.factor);
+        pointerYSetters[index](motion.baseY + normalizedY * motion.factor * 0.55);
+      });
+    });
+
+    brandTransform.addEventListener("pointerleave", () => {
+      pointerXSetters.forEach((setX, index) => {
+        const motion = backgroundMotion[index] || backgroundMotion[backgroundMotion.length - 1];
+        setX(motion.baseX);
+        pointerYSetters[index](motion.baseY);
+      });
+    });
+  }
+}
+
+if (testimonialSection) {
+  const prevButton = testimonialSection.querySelector("[data-testimonial-prev]");
+  const nextButton = testimonialSection.querySelector("[data-testimonial-next]");
+  const caption = testimonialSection.querySelector("[data-testimonial-caption]");
+  const quote = testimonialSection.querySelector("[data-testimonial-quote]");
+  const name = testimonialSection.querySelector("[data-testimonial-name]");
+  const role = testimonialSection.querySelector("[data-testimonial-role]");
+  const card = testimonialSection.querySelector("[data-testimonial-card]");
+  const reducedMotion = reduceMotionQuery.matches;
+  let activeTestimonialIndex = 0;
+  let testimonialSwapTween = null;
+
+  const testimonials = [
+    {
+      caption: "A growth partner that brings clarity to every decision.",
+      quote:
+        "Northstar Metric helped us stop treating Google Ads, Meta, and our landing pages as separate projects. Once the tracking and conversion flow were rebuilt, the quality of inbound leads improved and the team finally had one clear view of what was working.",
+      name: "Amelia R.",
+      role: "VP of Marketing, regional healthcare group",
+    },
+    {
+      caption: "They gave our internal team a cleaner operating system.",
+      quote:
+        "What stood out was how quickly they found the disconnect between ad intent, page structure, and reporting. We were getting traffic before. After the rebuild, we were getting conversations that sales actually wanted.",
+      name: "Daniel C.",
+      role: "Founder, multi-location professional services brand",
+    },
+    {
+      caption: "Senior thinking, direct execution, no performance theater.",
+      quote:
+        "We had worked with agencies that reported activity but not insight. Northstar Metric brought discipline to campaign structure, attribution, and creative testing, and it changed how confidently we could scale paid spend.",
+      name: "Lauren M.",
+      role: "Director of Growth, B2B SaaS company",
+    },
+    {
+      caption: "They improved both performance and confidence in the numbers.",
+      quote:
+        "Before the engagement, we were making channel decisions with too much guesswork. After the cleanup across reporting, landing pages, and paid traffic, the team finally trusted what the numbers were telling us and knew where to scale.",
+      name: "Marcus B.",
+      role: "COO, home services growth brand",
+    },
+  ];
+
+  const renderTestimonial = (index) => {
+    const item = testimonials[index];
+    if (!item) return;
+    if (caption) caption.textContent = `"${item.caption}"`;
+    if (quote) quote.textContent = `"${item.quote}"`;
+    if (name) name.textContent = item.name;
+    if (role) role.textContent = item.role;
+  };
+
+  const swapTestimonial = (nextIndex, direction = 1) => {
+    const normalized = (nextIndex + testimonials.length) % testimonials.length;
+    if (normalized === activeTestimonialIndex) return;
+
+    if (!window.gsap || reducedMotion || !card) {
+      activeTestimonialIndex = normalized;
+      renderTestimonial(activeTestimonialIndex);
+      return;
+    }
+
+    if (testimonialSwapTween) testimonialSwapTween.kill();
+
+    const rotateOut = direction > 0 ? -18 : 18;
+    const rotateIn = direction > 0 ? 18 : -18;
+    const shiftOut = direction > 0 ? -34 : 34;
+    const shiftIn = direction > 0 ? 34 : -34;
+
+    testimonialSwapTween = window.gsap.timeline({
+      defaults: { ease: "power2.out" },
+      onComplete: () => {
+        testimonialSwapTween = null;
+      },
+    });
+
+    testimonialSwapTween
+      .to(card, {
+        opacity: 0,
+        x: shiftOut,
+        rotateY: rotateOut,
+        scale: 0.96,
+        duration: 0.22,
+        transformOrigin: direction > 0 ? "100% 50%" : "0% 50%",
+      })
+      .add(() => {
+        activeTestimonialIndex = normalized;
+        renderTestimonial(activeTestimonialIndex);
+        window.gsap.set(card, {
+          x: shiftIn,
+          rotateY: rotateIn,
+          scale: 0.96,
+          transformOrigin: direction > 0 ? "0% 50%" : "100% 50%",
+        });
+      })
+      .to(card, {
+        opacity: 1,
+        x: 0,
+        rotateY: 0,
+        scale: 1,
+        duration: 0.38,
+        ease: "power3.out",
+      });
+  };
+
+  renderTestimonial(activeTestimonialIndex);
+
+  prevButton?.addEventListener("click", () => {
+    swapTestimonial(activeTestimonialIndex - 1, -1);
+  });
+
+  nextButton?.addEventListener("click", () => {
+    swapTestimonial(activeTestimonialIndex + 1, 1);
+  });
+}
+
+if (ctaBanner) {
+  const image = ctaBanner.querySelector("[data-cta-banner-image]");
+  const reducedMotion = reduceMotionQuery.matches;
+
+  if (image && window.gsap && !reducedMotion) {
+    const gsap = window.gsap;
+    const ScrollTrigger = window.ScrollTrigger;
+
+    if (ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.to(image, {
+        yPercent: 10,
+        scale: 1.12,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ctaBanner,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.9,
+        },
+      });
+    }
+  }
 }
 
 if (hero && window.gsap) {

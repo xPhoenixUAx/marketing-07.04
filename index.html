@@ -915,6 +915,11 @@
       <section class="section section--brand-transform">
         <div class="section-shell">
           <div class="brand-transform reveal" data-brand-transform>
+            <div class="brand-transform__motion" aria-hidden="true">
+              <span class="brand-transform__motion-layer brand-transform__motion-layer--violet" data-brand-bg-layer="violet"></span>
+              <span class="brand-transform__motion-layer brand-transform__motion-layer--cyan" data-brand-bg-layer="cyan"></span>
+              <span class="brand-transform__motion-layer brand-transform__motion-layer--sheen" data-brand-bg-layer="sheen"></span>
+            </div>
             <div class="brand-transform__head">
               <h2>See how we've transformed <span>brands online</span>.</h2>
             </div>
@@ -971,100 +976,154 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section section--testimonials">
         <div class="section-shell">
-          <div class="section-head reveal">
-            <span class="eyebrow">Impact</span>
-            <h2>The operational gains clients usually care about most.</h2>
-          </div>
-          <div class="metrics-grid">
-            <article class="metric-card reveal">
-              <span class="metric-card__label">Paid efficiency</span>
-              <strong>Lower waste</strong>
-              <p>
-                Less irrelevant traffic after keyword cleanup, negative lists,
-                audience refinement, and better platform segmentation.
+          <div class="testimonials reveal" data-testimonials>
+            <div class="testimonials__decor" aria-hidden="true">
+              <span class="testimonials__shape testimonials__shape--large"></span>
+              <span class="testimonials__shape testimonials__shape--small"></span>
+              <span class="testimonials__dots"></span>
+            </div>
+
+            <div class="testimonials__intro">
+              <h2>Why teams trust the way we build <span>growth systems</span>.</h2>
+              <p class="testimonials__lead">
+                The strongest feedback we get is not about “more activity.” It
+                is about clearer decision-making, better lead quality, and the
+                fact that paid media, landing pages, and analytics finally work
+                together like one system.
               </p>
-            </article>
-            <article class="metric-card reveal">
-              <span class="metric-card__label">Lead quality</span>
-              <strong>Better fit</strong>
-              <p>
-                Stronger message match between ads, offers, and landing pages
-                typically improves the quality of inbound inquiries.
-              </p>
-            </article>
-            <article class="metric-card reveal">
-              <span class="metric-card__label">Conversion flow</span>
-              <strong>Less friction</strong>
-              <p>
-                Sharper page structure, clearer proof, better form logic, and
-                more direct calls to action improve response rates.
-              </p>
-            </article>
-            <article class="metric-card reveal">
-              <span class="metric-card__label">Reporting clarity</span>
-              <strong>More usable</strong>
-              <p>
-                GA4 and dashboard cleanup make it easier to see which channels
-                deserve scale and which ones need correction.
-              </p>
-            </article>
+
+              <div class="testimonials__signals" aria-label="Review signals">
+                <article class="testimonials__signal">
+                  <span class="testimonials__signal-label">Google Reviews</span>
+                  <div class="testimonials__stars" aria-hidden="true">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                  <p>4.9/5 from businesses focused on qualified growth.</p>
+                </article>
+
+                <article class="testimonials__signal">
+                  <span class="testimonials__signal-label">Working Style</span>
+                  <p>
+                    Direct senior involvement, fast communication, and clearer
+                    performance reporting.
+                  </p>
+                </article>
+              </div>
+            </div>
+
+            <div class="testimonials__stage">
+              <article class="testimonial-card" data-testimonial-card>
+                <div class="testimonial-card__quote-mark" aria-hidden="true">
+                  <i class="fa-solid fa-quote-left"></i>
+                </div>
+                <div class="testimonial-card__top">
+                  <span class="testimonial-card__caption" data-testimonial-caption
+                    >“A growth partner that brings clarity to every decision.”</span
+                  >
+                </div>
+                <blockquote class="testimonial-card__quote" data-testimonial-quote>
+                  “Northstar Metric helped us stop treating Google Ads, Meta,
+                  and our landing pages as separate projects. Once the tracking
+                  and conversion flow were rebuilt, the quality of inbound leads
+                  improved and the team finally had one clear view of what was
+                  working.”
+                </blockquote>
+
+                <div class="testimonial-card__footer">
+                  <div class="testimonial-card__person">
+                    <div class="testimonial-card__identity">
+                      <strong data-testimonial-name>Amelia R.</strong>
+                      <span data-testimonial-role
+                        >VP of Marketing, regional healthcare group</span
+                      >
+                    </div>
+                  </div>
+
+                  <div class="testimonial-card__badge">
+                    <span class="testimonial-card__badge-label">Verified client</span>
+                    <div class="testimonial-card__stars" aria-hidden="true">
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <div class="testimonials__controls">
+                <button
+                  class="testimonials__control"
+                  type="button"
+                  aria-label="Previous testimonial"
+                  data-testimonial-prev
+                >
+                  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                </button>
+                <button
+                  class="testimonials__control"
+                  type="button"
+                  aria-label="Next testimonial"
+                  data-testimonial-next
+                >
+                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section section--cta-banner">
         <div class="section-shell">
-          <div class="section-head reveal">
-            <span class="eyebrow">Insights</span>
-            <h2>Topics we regularly help clients untangle.</h2>
-          </div>
-          <div class="insights-grid">
-            <article class="insight-card reveal">
-              <span class="insight-card__meta">Google Ads</span>
-              <h3>
-                Why campaign performance drops when one landing page tries to
-                serve every keyword.
-              </h3>
-              <p>
-                Search intent needs message continuity. A generic page usually
-                weakens relevance, confidence, and conversion rate at the same
-                time.
+          <div class="cta-banner reveal" data-cta-banner>
+            <div class="cta-banner__media" aria-hidden="true">
+              <img
+                class="cta-banner__image"
+                src="img/home/cta-banner.jpg"
+                alt=""
+                data-cta-banner-image
+              />
+            </div>
+
+            <div class="cta-banner__overlay"></div>
+
+            <div class="cta-banner__content">
+              <h2>
+                Need a clearer growth plan than <span>"run more ads and hope"</span>?
+              </h2>
+              <p class="cta-banner__lead">
+                We review traffic quality, campaign structure, landing-page
+                friction, and tracking clarity so you can see exactly where
+                leads are being lost and where scale is actually justified.
               </p>
-            </article>
-            <article class="insight-card reveal">
-              <span class="insight-card__meta">Analytics</span>
-              <h3>Why GA4 often tells teams less than they think.</h3>
-              <p>
-                Broken events, duplicated conversions, weak attribution
-                assumptions, and vanity dashboards create false confidence very
-                quickly.
-              </p>
-            </article>
-            <article class="insight-card reveal">
-              <span class="insight-card__meta">SEO + CRO</span>
-              <h3>
-                Why more traffic does not matter if service pages do not
-                convert.
-              </h3>
-              <p>
-                Search growth becomes commercially useful only when the target
-                pages carry real trust, clear structure, and the right action
-                path.
-              </p>
-            </article>
+
+              <div class="cta-banner__actions">
+                <a class="button button--hero" href="contact.html"
+                  >Book a Strategy Call</a
+                >
+                <a class="button button-ghost cta-banner__ghost" href="services.html"
+                  >Explore Services</a
+                >
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section section--home-faq">
         <div class="section-shell">
           <div class="section-head reveal">
-            <span class="eyebrow">Frequently Asked Questions</span>
             <h2>Questions we hear from businesses comparing agencies.</h2>
           </div>
-          <div class="grid">
+          <div class="home-faq-grid">
             <article class="faq-item reveal" data-faq-item>
               <button
                 class="faq-question"
@@ -1159,30 +1218,113 @@
                 </p>
               </div>
             </article>
+            <article class="faq-item reveal" data-faq-item>
+              <button
+                class="faq-question"
+                type="button"
+                aria-expanded="false"
+                data-faq-question
+              >
+                <span>What does working together usually start with?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Most engagements begin with a strategy and account review so
+                  we can see where demand quality breaks down across ads,
+                  landing pages, offer structure, and tracking before making
+                  scaling recommendations.
+                </p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section section--cta-banner">
         <div class="section-shell">
-          <div class="cta-band reveal">
-            <span class="eyebrow">Next Step</span>
-            <h2>Need a clearer growth plan than "run more ads and hope"?</h2>
-            <p class="lead">
-              Let's review your traffic sources, campaign structure, landing
-              pages, and tracking setup to identify where growth is actually
-              being lost.
-            </p>
-            <div class="hero-actions" style="margin-top: 1.2rem">
-              <a class="button button--accent" href="contact.html"
-                >Book a Strategy Call</a
-              >
-              <a class="button-ghost" href="about.html">Meet the Agency</a>
+          <div class="cta-banner reveal" data-cta-banner>
+            <div class="cta-banner__media" aria-hidden="true">
+              <img
+                class="cta-banner__image"
+                src="img/home/cta-banner.jpg"
+                alt=""
+                data-cta-banner-image
+              />
+            </div>
+
+            <div class="cta-banner__overlay"></div>
+
+            <div class="cta-banner__content">
+              <span class="eyebrow eyebrow--banner">Ready to Move</span>
+              <h2>
+                Need a clearer growth plan than <span>“run more ads and hope”</span>?
+              </h2>
+              <p class="cta-banner__lead">
+                We review traffic quality, campaign structure, landing-page
+                friction, and tracking clarity so you can see exactly where
+                leads are being lost and where scale is actually justified.
+              </p>
+
+              <div class="cta-banner__actions">
+                <a class="button button--hero" href="contact.html"
+                  >Book a Strategy Call</a
+                >
+                <a class="button button-ghost cta-banner__ghost" href="services.html"
+                  >Explore Services</a
+                >
+              </div>
             </div>
           </div>
         </div>
       </section>
     </main>
+
+    <div
+      class="brand-modal"
+      data-brand-modal
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="brand-modal-title"
+    >
+      <div class="brand-modal__backdrop" data-brand-modal-close></div>
+      <div class="brand-modal__panel">
+        <button
+          class="brand-modal__close"
+          type="button"
+          aria-label="Close case study details"
+          data-brand-modal-close
+        >
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+
+        <div class="brand-modal__media">
+          <img src="" alt="" data-brand-modal-image />
+        </div>
+
+        <div class="brand-modal__content">
+          <span class="brand-modal__tag" data-brand-modal-tag></span>
+          <h3 id="brand-modal-title" data-brand-modal-title></h3>
+          <p class="brand-modal__lead" data-brand-modal-copy></p>
+
+          <div class="brand-modal__section">
+            <span class="brand-modal__label">Scope</span>
+            <p data-brand-modal-overview></p>
+          </div>
+
+          <div class="brand-modal__section">
+            <span class="brand-modal__label">What We Changed</span>
+            <ul class="brand-modal__list" data-brand-modal-list></ul>
+          </div>
+
+          <div class="brand-modal__highlight">
+            <span class="brand-modal__label">Why It Mattered</span>
+            <p data-brand-modal-result></p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <footer class="site-footer">
       <div class="footer-shell">
