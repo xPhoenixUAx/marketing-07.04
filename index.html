@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="css/bundle.css">
 </head>
 <body class="page-home">
@@ -183,48 +184,60 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section section--service-showcase">
       <div class="section-shell">
-        <div class="section-head reveal">
-          <span class="eyebrow">Core Services</span>
-          <h2>Execution areas tied directly to traffic, conversion, and measurement.</h2>
-        </div>
-        <div class="services-preview-grid">
-          <article class="service-preview reveal">
-            <h3>Brand Strategy</h3>
-            <p>Positioning, offer structure, messaging hierarchy, and landing-page narrative so paid and organic traffic hits a clearer commercial message.</p>
-            <a class="service-preview__link" href="services.html">View service scope</a>
-          </article>
-          <article class="service-preview reveal">
-            <h3>Paid Advertising</h3>
-            <p>Campaign management across Google Ads, Meta Ads, YouTube Ads, LinkedIn Ads, remarketing, and paid landing-page funnels.</p>
-            <a class="service-preview__link" href="service-detail.html">See paid advertising detail</a>
-          </article>
-          <article class="service-preview reveal">
-            <h3>SEO</h3>
-            <p>Technical SEO, service-page optimization, content briefs, internal linking, local SEO signals, and search intent mapping around revenue pages.</p>
-            <a class="service-preview__link" href="services.html">Explore SEO support</a>
-          </article>
-          <article class="service-preview reveal">
-            <h3>Content Marketing</h3>
-            <p>Commercial content for search, nurture, retargeting, and sales enablement instead of disconnected blog publishing.</p>
-            <a class="service-preview__link" href="services.html">See content programs</a>
-          </article>
-          <article class="service-preview reveal">
-            <h3>Web Design &amp; CRO</h3>
-            <p>Landing pages, service pages, offer pages, form-flow improvements, and conversion testing designed to improve inquiry quality.</p>
-            <a class="service-preview__link" href="services.html">Review website work</a>
-          </article>
-          <article class="service-preview reveal">
-            <h3>Analytics &amp; Reporting</h3>
-            <p>GA4, Google Tag Manager, event tracking, attribution cleanup, Looker Studio dashboards, and reporting leaders can actually use.</p>
-            <a class="service-preview__link" href="services.html">Understand reporting</a>
-          </article>
+        <div class="service-showcase reveal" data-service-showcase>
+          <div class="service-showcase__decor service-showcase__decor--left" aria-hidden="true"></div>
+          <div class="service-showcase__decor service-showcase__decor--right" aria-hidden="true"></div>
+
+          <div class="service-showcase__head">
+            <span class="eyebrow eyebrow--light">Capability Focus</span>
+            <h2>Our approach to <span>performance growth</span> is channel-aware, conversion-focused, and built around measurable demand.</h2>
+          </div>
+
+          <div class="service-showcase__panel">
+            <div class="service-showcase__nav" role="tablist" aria-label="Service categories">
+              <button class="service-showcase__tab is-active" type="button" role="tab" aria-selected="true" data-service-tab="google-ads">Google Ads Management</button>
+              <button class="service-showcase__tab" type="button" role="tab" aria-selected="false" data-service-tab="meta-ads">Meta Ads Campaigns</button>
+              <button class="service-showcase__tab" type="button" role="tab" aria-selected="false" data-service-tab="landing-pages">Landing Pages &amp; CRO</button>
+              <button class="service-showcase__tab" type="button" role="tab" aria-selected="false" data-service-tab="seo-content">SEO &amp; Commercial Content</button>
+              <button class="service-showcase__tab" type="button" role="tab" aria-selected="false" data-service-tab="analytics">Analytics &amp; Attribution</button>
+              <button class="service-showcase__tab" type="button" role="tab" aria-selected="false" data-service-tab="remarketing">Remarketing &amp; Retention</button>
+            </div>
+
+            <article class="service-showcase__card" data-service-panel>
+                <div class="service-showcase__media">
+                  <div class="service-showcase__media-badge" data-service-badge>Google Ads Management</div>
+                  <div class="service-showcase__media-placeholder" data-service-media>
+                    <img
+                      class="service-showcase__media-image"
+                      src="img/services/main-page/google-ads.jpg"
+                      alt="Google Ads campaign management visual"
+                      data-service-image
+                    />
+                  </div>
+                </div>
+
+                <div class="service-showcase__body">
+                  <div class="service-showcase__icon is-brand" aria-hidden="true" data-service-icon>
+                    <i class="fa-brands fa-google"></i>
+                  </div>
+                <h3 data-service-title>Google Ads systems built for qualified demand that converts, not vanity traffic.</h3>
+                <p data-service-copy>Paid search built around lead quality, efficiency, and cleaner decision-making.</p>
+                <ul class="service-showcase__list" data-service-list>
+                  <li>Search and Performance Max structure</li>
+                  <li>Landing-page and form-flow alignment</li>
+                  <li>Budget and search-term cleanup</li>
+                </ul>
+                <a class="service-showcase__link" href="service-detail.html" data-service-link>View service detail</a>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section section--legacy-choice">
       <div class="section-shell">
         <div class="section-head reveal">
           <span class="eyebrow">Why Clients Choose Us</span>
@@ -255,6 +268,39 @@
             <h3>Senior execution</h3>
             <p>Clients get strategic thinking and direct implementation, not generic account babysitting.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--why-us">
+      <div class="section-shell">
+        <div class="why-us reveal">
+          <div class="why-us__visual">
+            <div class="why-us__backdrop" aria-hidden="true"></div>
+            <img class="why-us__image" src="img/home/why.png" alt="Northstar Metric team member holding a megaphone" />
+            <div class="why-us__stat-card" aria-hidden="true">
+              <span class="why-us__stat-label">Funnel Visibility</span>
+              <div class="why-us__stat-chart">
+                <span class="why-us__stat-ring"></span>
+                <div class="why-us__stat-lines">
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="why-us__content">
+            <h2>Build a <span>stronger growth system</span> across paid media, landing pages, and performance reporting.</h2>
+            <p class="why-us__lead">Most accounts do not need another layer of activity. They need cleaner structure, better landing-page alignment, and tracking that leadership can actually trust. We connect Google Ads, Meta Ads, CRO, and analytics into one operating model that improves lead quality and makes scale decisions clearer.</p>
+            <ul class="why-us__list">
+              <li>Paid media decisions tied to sales intent, not soft vanity metrics</li>
+              <li>Landing-page and form-flow responsibility built into campaign execution</li>
+              <li>GA4, GTM, and reporting fixed before performance gets overstated</li>
+              <li>Senior strategic oversight with direct implementation and iteration</li>
+            </ul>
+            <a class="button button--accent why-us__cta" href="services.html">See how we work</a>
+          </div>
         </div>
       </div>
     </section>

@@ -7,6 +7,7 @@ const revealItems = document.querySelectorAll(".reveal");
 const faqItems = document.querySelectorAll("[data-faq-item]");
 const yearTargets = document.querySelectorAll("[data-year]");
 const countUpItems = document.querySelectorAll("[data-count-up]");
+const serviceShowcase = document.querySelector("[data-service-showcase]");
 const hero = document.querySelector("[data-hero]");
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -143,6 +144,272 @@ if ("IntersectionObserver" in window && countUpItems.length) {
   countUpItems.forEach((item) => countObserver.observe(item));
 } else {
   countUpItems.forEach((item) => runCountUp(item));
+}
+
+if (serviceShowcase) {
+  const tabs = serviceShowcase.querySelectorAll("[data-service-tab]");
+  const badge = serviceShowcase.querySelector("[data-service-badge]");
+  const media = serviceShowcase.querySelector("[data-service-media]");
+  const mediaImage = serviceShowcase.querySelector("[data-service-image]");
+  const icon = serviceShowcase.querySelector("[data-service-icon]");
+  const title = serviceShowcase.querySelector("[data-service-title]");
+  const copy = serviceShowcase.querySelector("[data-service-copy]");
+  const list = serviceShowcase.querySelector("[data-service-list]");
+  const link = serviceShowcase.querySelector("[data-service-link]");
+  const reducedMotion = reduceMotionQuery.matches;
+  let activeServiceKey =
+    serviceShowcase.querySelector(".service-showcase__tab.is-active")?.dataset.serviceTab || "google-ads";
+  let panelSwapTimeline = null;
+
+  const serviceContent = {
+    "google-ads": {
+      badge: "Google Ads Management",
+      icon: '<i class="fa-brands fa-google"></i>',
+      iconTheme: "brand",
+      title: "Google Ads systems built for qualified demand that converts, not vanity traffic.",
+      copy: "Paid search built around lead quality, efficiency, and cleaner decision-making.",
+      items: [
+        "Search and Performance Max structure",
+        "Landing-page and form-flow alignment",
+        "Budget and search-term cleanup",
+        ],
+        link: "service-detail.html",
+        mediaSrc: "img/services/main-page/google-ads.jpg",
+        mediaAlt: "Google Ads campaign management visual",
+      },
+    "meta-ads": {
+      badge: "Meta Ads Campaigns",
+      icon: '<i class="fa-brands fa-meta"></i>',
+      iconTheme: "brand",
+      title: "Paid social built around creative testing, offer clarity, and funnel progression.",
+      copy: "Paid social programs structured to create demand and improve follow-through after the click.",
+      items: [
+        "Prospecting and retargeting campaign structure",
+        "Creative testing by audience and offer stage",
+        "Signal cleanup and clearer paid social reporting",
+        ],
+        link: "services.html",
+        mediaSrc: "img/services/main-page/meta-ads.jpg",
+        mediaAlt: "Meta Ads campaign planning visual",
+      },
+    "landing-pages": {
+      badge: "Landing Pages & CRO",
+      icon: '<i class="fa-solid fa-window-maximize"></i>',
+      iconTheme: "solid",
+      title: "Landing pages designed to convert paid clicks into booked calls and qualified forms.",
+      copy: "Conversion-focused pages that reduce friction and make offers easier to act on.",
+      items: [
+        "Offer-page structure and page messaging",
+        "Form-flow improvements and CTA clarity",
+        "CRO testing priorities and path analysis",
+        ],
+        link: "services.html",
+        mediaSrc: "img/services/main-page/landing.jpg",
+        mediaAlt: "Landing page and CRO strategy visual",
+      },
+    "seo-content": {
+      badge: "SEO & Commercial Content",
+      icon: '<i class="fa-solid fa-magnifying-glass-chart"></i>',
+      iconTheme: "solid",
+      title: "Search visibility built around revenue pages, not disconnected publishing.",
+      copy: "Organic growth designed to support the same demand goals as your paid channels.",
+      items: [
+        "Revenue-page SEO and intent mapping",
+        "Commercial content briefs and page structure",
+        "Technical fixes and internal linking improvements",
+        ],
+        link: "services.html",
+        mediaSrc: "img/services/main-page/seo.jpg",
+        mediaAlt: "SEO and commercial content planning visual",
+      },
+    analytics: {
+      badge: "Analytics & Attribution",
+      icon: '<i class="fa-solid fa-chart-line"></i>',
+      iconTheme: "solid",
+      title: "Tracking and reporting that help teams make confident budget decisions.",
+      copy: "Measurement systems built to reduce noise and improve budget decisions.",
+      items: [
+        "GA4 and GTM conversion integrity checks",
+        "Looker Studio reporting for teams and leadership",
+        "Attribution review across paid and organic traffic",
+        ],
+        link: "services.html",
+        mediaSrc: "img/services/main-page/analytics.jpg",
+        mediaAlt: "Analytics and attribution reporting visual",
+      },
+    remarketing: {
+      badge: "Remarketing & Retention",
+      icon: '<i class="fa-solid fa-rotate"></i>',
+      iconTheme: "solid",
+      title: "Follow-up systems that recover intent and lift efficiency across the funnel.",
+      copy: "Remarketing flows that recover intent and keep acquisition spend working longer.",
+      items: [
+        "Audience rebuilds across search and social",
+        "Nurture sequencing by offer stage",
+        "Retention touchpoints for return visits",
+        ],
+        link: "services.html",
+        mediaSrc: "img/services/main-page/remarketing.jpg",
+        mediaAlt: "Remarketing and retention campaign visual",
+      },
+    };
+
+  const updateServicePanel = (key) => {
+      const content = serviceContent[key];
+      if (!content || !badge || !media || !icon || !title || !copy || !list || !link) return;
+
+      badge.textContent = content.badge;
+      icon.innerHTML = content.icon;
+      icon.classList.toggle("is-brand", content.iconTheme === "brand");
+      title.textContent = content.title;
+      copy.textContent = content.copy;
+      if (mediaImage) {
+        mediaImage.src = content.mediaSrc;
+        mediaImage.alt = content.mediaAlt;
+      }
+      link.href = content.link;
+      link.textContent = key === "google-ads" ? "View service detail" : "Explore service";
+      list.innerHTML = content.items.map((item) => `<li>${item}</li>`).join("");
+    };
+
+  const animateServicePanel = (key) => {
+    if (key === activeServiceKey) return;
+
+    if (!window.gsap || reducedMotion) {
+      updateServicePanel(key);
+      activeServiceKey = key;
+      return;
+    }
+
+    const gsap = window.gsap;
+    const panelTargets = [badge, media, icon, title, copy, list, link].filter(Boolean);
+
+    if (panelSwapTimeline) {
+      panelSwapTimeline.kill();
+      gsap.set(panelTargets, { clearProps: "all" });
+    }
+
+    panelSwapTimeline = gsap.timeline({
+      defaults: { ease: "power2.out" },
+      onComplete: () => {
+        gsap.set(panelTargets, { clearProps: "opacity,transform" });
+        panelSwapTimeline = null;
+      },
+    });
+
+    panelSwapTimeline
+      .to([badge, icon, title, copy, list, link], {
+        opacity: 0,
+        y: 12,
+        duration: 0.2,
+        stagger: 0.025,
+      })
+      .to(
+        media,
+        {
+          opacity: 0,
+          scale: 0.985,
+          duration: 0.24,
+        },
+        0
+      )
+      .add(() => {
+        updateServicePanel(key);
+        activeServiceKey = key;
+        gsap.set([badge, icon, title, copy, list, link], { opacity: 0, y: 14 });
+        gsap.set(media, { opacity: 0, scale: 1.035 });
+      })
+      .to(
+        media,
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.42,
+        },
+        "+=0.02"
+      )
+      .to(
+        badge,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.24,
+        },
+        "-=0.3"
+      )
+      .to(
+        [icon, title, copy],
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.32,
+          stagger: 0.05,
+        },
+        "-=0.18"
+      )
+      .to(
+        list,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.28,
+        },
+        "-=0.14"
+      )
+      .to(
+        link,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.28,
+        },
+        "-=0.14"
+      );
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const key = tab.dataset.serviceTab;
+      if (!key) return;
+
+      tabs.forEach((item) => {
+        item.classList.remove("is-active");
+        item.setAttribute("aria-selected", "false");
+      });
+
+      tab.classList.add("is-active");
+      tab.setAttribute("aria-selected", "true");
+      animateServicePanel(key);
+    });
+  });
+
+  if (window.gsap) {
+    const gsap = window.gsap;
+
+    if (window.ScrollTrigger) {
+      const ScrollTrigger = window.ScrollTrigger;
+      gsap.registerPlugin(ScrollTrigger);
+
+      if (reducedMotion) {
+        gsap.set(tabs, { clearProps: "all" });
+      } else {
+        gsap.from(tabs, {
+          opacity: 0,
+          x: -34,
+          y: 10,
+          duration: 0.68,
+          ease: "power3.out",
+          stagger: 0.12,
+          clearProps: "opacity,transform",
+          scrollTrigger: {
+            trigger: serviceShowcase,
+            start: "top 72%",
+            once: true,
+          },
+        });
+      }
+    }
+  }
 }
 
 if (hero && window.gsap) {
