@@ -1,0 +1,41 @@
+body.page-services .service-listing,
+body.page-services .integration-panel,
+body.page-services .faq-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+body.page-services .service-listing {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+body.page-services .service-card {
+  padding: 1.5rem;
+  display: grid;
+  gap: 0.95rem;
+}
+
+body.page-services .service-card__list {
+  display: grid;
+  gap: 0.65rem;
+  color: var(--ink-soft);
+}
+
+body.page-services .integration-panel {
+  padding: 1.6rem;
+}
+
+body.page-services .process-summary {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  body.page-services .service-listing {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body.page-services .process-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

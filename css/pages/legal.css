@@ -1,0 +1,31 @@
+body.page-legal .legal-layout {
+  display: grid;
+  gap: 1rem;
+}
+
+body.page-legal .legal-card {
+  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+body.page-legal .legal-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+body.page-legal .legal-nav a {
+  padding: 0.65rem 0.95rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.64);
+}
+
+body.page-legal .legal-card h2 {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+body.page-legal .legal-card h3 {
+  font-size: 1.15rem;
+}

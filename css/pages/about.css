@@ -1,0 +1,33 @@
+body.page-about .philosophy-grid,
+body.page-about .values-grid,
+body.page-about .capabilities-grid,
+body.page-about .timeline-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+body.page-about .story-card,
+body.page-about .value-card,
+body.page-about .capability-card,
+body.page-about .timeline-card {
+  padding: 1.45rem;
+  display: grid;
+  gap: 0.8rem;
+}
+
+body.page-about .timeline-year {
+  color: var(--accent-strong);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+@media (min-width: 768px) {
+  body.page-about .philosophy-grid,
+  body.page-about .values-grid,
+  body.page-about .capabilities-grid,
+  body.page-about .timeline-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

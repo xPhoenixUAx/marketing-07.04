@@ -1,0 +1,50 @@
+body.page-service .overview-grid,
+body.page-service .deliverables-grid,
+body.page-service .channel-grid,
+body.page-service .mistakes-grid,
+body.page-service .audience-grid,
+body.page-service .workflow-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+body.page-service .detail-card,
+body.page-service .channel-card,
+body.page-service .mistake-card,
+body.page-service .audience-card,
+body.page-service .workflow-card {
+  padding: 1.45rem;
+  display: grid;
+  gap: 0.8rem;
+}
+
+body.page-service .workflow-number {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  body.page-service .deliverables-grid,
+  body.page-service .channel-grid,
+  body.page-service .mistakes-grid,
+  body.page-service .audience-grid,
+  body.page-service .workflow-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  body.page-service .deliverables-grid,
+  body.page-service .channel-grid,
+  body.page-service .mistakes-grid,
+  body.page-service .audience-grid,
+  body.page-service .workflow-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
