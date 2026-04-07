@@ -1,214 +1,450 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Northstar Metric is a marketing agency focused on Google Ads, Meta Ads, SEO, landing pages, CRO, GA4 tracking, and reporting for businesses that need measurable growth.">
-  <title>Northstar Metric | Google Ads, SEO, CRO & Analytics for Growth</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  <link rel="stylesheet" href="css/bundle.css">
-</head>
-<body class="page-home">
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header" data-header>
-    <div class="header-shell">
-      <a class="brand-mark" href="index.html" aria-label="Northstar Metric home">
-        <span class="brand-mark__dot" aria-hidden="true"></span>
-        <span class="brand-mark__name">Northstar Metric</span>
-      </a>
-      <nav class="site-nav" aria-label="Primary">
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="services.html">Services</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="header-actions">
-        <a class="header-cta" href="contact.html">Let's Talk <span class="header-cta__icon" aria-hidden="true">&#8599;</span></a>
-        <a class="header-phone" href="tel:+12125550148" aria-label="Call Northstar Metric">
-          <span class="header-phone__icon" aria-hidden="true">&#9742;</span>
-          <span>+1 (212) 555-0148</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Northstar Metric is a marketing agency focused on Google Ads, Meta Ads, SEO, landing pages, CRO, GA4 tracking, and reporting for businesses that need measurable growth."
+    />
+    <title>
+      Northstar Metric | Google Ads, SEO, CRO & Analytics for Growth
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/bundle.css" />
+  </head>
+  <body class="page-home">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="header-shell">
+        <a
+          class="brand-mark"
+          href="index.html"
+          aria-label="Northstar Metric home"
+        >
+          <span class="brand-mark__dot" aria-hidden="true"></span>
+          <span class="brand-mark__name">Northstar Metric</span>
         </a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation" data-menu-toggle>
-          <span class="menu-toggle__bars"></span>
-        </button>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="index.html" aria-current="page">Home</a>
+          <a href="services.html">Services</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="header-actions">
+          <a class="header-cta" href="contact.html"
+            >Let's Talk
+            <span class="header-cta__icon" aria-hidden="true">&#8599;</span></a
+          >
+          <a
+            class="header-phone"
+            href="tel:+12125550148"
+            aria-label="Call Northstar Metric"
+          >
+            <span class="header-phone__icon" aria-hidden="true">&#9742;</span>
+            <span>+1 (212) 555-0148</span>
+          </a>
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            aria-label="Open navigation"
+            data-menu-toggle
+          >
+            <span class="menu-toggle__bars"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+      <div class="mobile-menu__panel">
+        <span class="mobile-menu__eyebrow">Navigate</span>
+        <div class="mobile-menu__links">
+          <div class="mobile-menu__item" style="transition-delay: 60ms">
+            <a
+              class="mobile-menu__link"
+              href="index.html"
+              aria-current="page"
+              data-mobile-link
+              >Home</a
+            >
+          </div>
+          <div class="mobile-menu__item" style="transition-delay: 120ms">
+            <a class="mobile-menu__link" href="services.html" data-mobile-link
+              >Services</a
+            >
+          </div>
+          <div class="mobile-menu__item" style="transition-delay: 180ms">
+            <a class="mobile-menu__link" href="about.html" data-mobile-link
+              >About</a
+            >
+          </div>
+          <div class="mobile-menu__item" style="transition-delay: 240ms">
+            <a class="mobile-menu__link" href="contact.html" data-mobile-link
+              >Contact</a
+            >
+          </div>
+        </div>
+        <a class="button button--accent" href="contact.html" data-mobile-link
+          >Get a Growth Plan</a
+        >
+        <p class="mobile-menu__support">
+          Explore strategic growth paths with clarity, performance insight, and
+          modern execution.
+        </p>
       </div>
     </div>
-  </header>
 
-  <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
-    <div class="mobile-menu__panel">
-      <span class="mobile-menu__eyebrow">Navigate</span>
-      <div class="mobile-menu__links">
-        <div class="mobile-menu__item" style="transition-delay: 60ms;"><a class="mobile-menu__link" href="index.html" aria-current="page" data-mobile-link>Home</a></div>
-        <div class="mobile-menu__item" style="transition-delay: 120ms;"><a class="mobile-menu__link" href="services.html" data-mobile-link>Services</a></div>
-        <div class="mobile-menu__item" style="transition-delay: 180ms;"><a class="mobile-menu__link" href="about.html" data-mobile-link>About</a></div>
-        <div class="mobile-menu__item" style="transition-delay: 240ms;"><a class="mobile-menu__link" href="contact.html" data-mobile-link>Contact</a></div>
-      </div>
-      <a class="button button--accent" href="contact.html" data-mobile-link>Get a Growth Plan</a>
-      <p class="mobile-menu__support">Explore strategic growth paths with clarity, performance insight, and modern execution.</p>
-    </div>
-  </div>
-
-  <main class="page-main" id="main-content">
-    <section class="page-hero" data-hero>
-      <div class="hero-motion-scene" aria-hidden="true">
-        <div class="hero-motion-layer hero-motion-layer--back" data-hero-layer="0.18">
-          <span class="hero-motion-layer__shape"></span>
-        </div>
-        <div class="hero-motion-layer hero-motion-layer--mid" data-hero-layer="0.34">
-          <span class="hero-motion-layer__shape"></span>
-        </div>
-        <div class="hero-motion-layer hero-motion-layer--front" data-hero-layer="0.5">
-          <span class="hero-motion-layer__shape"></span>
-        </div>
-      </div>
-
-      <div class="section-shell hero-panel hero-panel--spotlight">
-        <div class="hero-copy hero-copy--showcase">
-          <h1 class="hero-title">
-            Smart Ads for
-            <span>Digital Growth</span>
-          </h1>
-          <p class="hero-script">Your Brand</p>
-          <p class="lead hero-lead">Google Ads, Meta Ads, SEO, landing pages, and CRO connected into one system built to generate qualified leads and reduce wasted spend.</p>
-          <div class="hero-actions hero-actions--showcase">
-            <a class="button button--hero" href="contact.html">Get Started</a>
+    <main class="page-main" id="main-content">
+      <section class="page-hero" data-hero>
+        <div class="hero-motion-scene" aria-hidden="true">
+          <div
+            class="hero-motion-layer hero-motion-layer--back"
+            data-hero-layer="0.18"
+          >
+            <span class="hero-motion-layer__shape"></span>
+          </div>
+          <div
+            class="hero-motion-layer hero-motion-layer--mid"
+            data-hero-layer="0.34"
+          >
+            <span class="hero-motion-layer__shape"></span>
+          </div>
+          <div
+            class="hero-motion-layer hero-motion-layer--front"
+            data-hero-layer="0.5"
+          >
+            <span class="hero-motion-layer__shape"></span>
           </div>
         </div>
 
-        <div class="hero-visual">
-          <div class="hero-visual__glow hero-visual__glow--one" aria-hidden="true"></div>
-          <div class="hero-visual__glow hero-visual__glow--two" aria-hidden="true"></div>
-          <img class="hero-visual__image" src="img/home/hero-main.png" alt="Person speaking through a megaphone" width="878" height="879">
-
-          <article class="hero-float-card hero-float-card--left">
-            <div class="hero-float-card__chart" aria-hidden="true">
-              <div class="hero-float-card__chart-meta">
-                <span class="hero-float-card__chart-label">Qualified Leads</span>
-                <span class="hero-float-card__chart-trend" data-count-up data-count-target="18.4" data-count-decimals="1" data-count-prefix="+" data-count-suffix="%">+0.0%</span>
-              </div>
-              <svg class="hero-float-card__chart-svg" viewBox="0 0 220 96" role="presentation" focusable="false">
-                <defs>
-                  <linearGradient id="hero-chart-fill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#635bff" stop-opacity="0.26"></stop>
-                    <stop offset="100%" stop-color="#635bff" stop-opacity="0"></stop>
-                  </linearGradient>
-                  <linearGradient id="hero-chart-line" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stop-color="#7b72ff"></stop>
-                    <stop offset="100%" stop-color="#4bc8ff"></stop>
-                  </linearGradient>
-                </defs>
-                <path class="hero-float-card__chart-area" d="M 12 70 C 24 54, 36 26, 50 32 C 64 38, 72 72, 88 66 C 104 60, 106 20, 124 18 C 142 16, 150 56, 168 50 C 186 44, 190 28, 208 24 L 208 88 L 12 88 Z"></path>
-                <path class="hero-float-card__chart-line" d="M 12 70 C 24 54, 36 26, 50 32 C 64 38, 72 72, 88 66 C 104 60, 106 20, 124 18 C 142 16, 150 56, 168 50 C 186 44, 190 28, 208 24"></path>
-                <circle class="hero-float-card__chart-point" cx="124" cy="18" r="4"></circle>
-                <circle class="hero-float-card__chart-point hero-float-card__chart-point--end" cx="208" cy="24" r="4.5"></circle>
-              </svg>
+        <div class="section-shell hero-panel hero-panel--spotlight">
+          <div class="hero-copy hero-copy--showcase">
+            <h1 class="hero-title">
+              Smart Ads for
+              <span>Digital Growth</span>
+            </h1>
+            <p class="hero-script">Your Brand</p>
+            <p class="lead hero-lead">
+              Google Ads, Meta Ads, SEO, landing pages, and CRO connected into
+              one system built to generate qualified leads and reduce wasted
+              spend.
+            </p>
+            <div class="hero-actions hero-actions--showcase">
+              <a class="button button--hero" href="contact.html">Get Started</a>
             </div>
-            <div class="hero-float-card__metric">
-              <strong data-count-up data-count-target="98.7" data-count-decimals="1" data-count-suffix="%">0.0%</strong>
-              <p>lead-to-demo completion</p>
-            </div>
-          </article>
-
-          <article class="hero-float-card hero-float-card--right">
-            <span class="hero-float-card__label">Revenue Growth</span>
-            <div class="hero-float-card__bars" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </article>
-
-          <div class="hero-signal" aria-label="Core platforms and tools">
-            <span class="hero-signal__label">Core stack</span>
-            <p>Google Ads, Meta Ads, GA4, GTM, landing pages, and CRO.</p>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section section--tight section--agency-intro">
-      <div class="section-shell">
-        <div class="agency-intro reveal">
-          <span class="agency-intro__lines agency-intro__lines--left" aria-hidden="true"></span>
-          <span class="agency-intro__lines agency-intro__lines--right" aria-hidden="true"></span>
+          <div class="hero-visual">
+            <div
+              class="hero-visual__glow hero-visual__glow--one"
+              aria-hidden="true"
+            ></div>
+            <div
+              class="hero-visual__glow hero-visual__glow--two"
+              aria-hidden="true"
+            ></div>
+            <img
+              class="hero-visual__image"
+              src="img/home/hero-main.png"
+              alt="Person speaking through a megaphone"
+              width="878"
+              height="879"
+            />
 
-          <div class="agency-intro__panel">
-            <article class="agency-intro__proof">
-              <div class="agency-intro__proof-surface">
-                <strong data-count-up data-count-target="920" data-count-suffix="+">0+</strong>
-                <p>Google Ads launches, Meta campaigns, landing-page rebuilds, GA4 fixes, and CRO updates shipped with clear performance ownership.</p>
+            <article class="hero-float-card hero-float-card--left">
+              <div class="hero-float-card__chart" aria-hidden="true">
+                <div class="hero-float-card__chart-meta">
+                  <span class="hero-float-card__chart-label"
+                    >Qualified Leads</span
+                  >
+                  <span
+                    class="hero-float-card__chart-trend"
+                    data-count-up
+                    data-count-target="18.4"
+                    data-count-decimals="1"
+                    data-count-prefix="+"
+                    data-count-suffix="%"
+                    >+0.0%</span
+                  >
+                </div>
+                <svg
+                  class="hero-float-card__chart-svg"
+                  viewBox="0 0 220 96"
+                  role="presentation"
+                  focusable="false"
+                >
+                  <defs>
+                    <linearGradient
+                      id="hero-chart-fill"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
+                      <stop
+                        offset="0%"
+                        stop-color="#635bff"
+                        stop-opacity="0.26"
+                      ></stop>
+                      <stop
+                        offset="100%"
+                        stop-color="#635bff"
+                        stop-opacity="0"
+                      ></stop>
+                    </linearGradient>
+                    <linearGradient
+                      id="hero-chart-line"
+                      x1="0"
+                      y1="0"
+                      x2="1"
+                      y2="0"
+                    >
+                      <stop offset="0%" stop-color="#7b72ff"></stop>
+                      <stop offset="100%" stop-color="#4bc8ff"></stop>
+                    </linearGradient>
+                  </defs>
+                  <path
+                    class="hero-float-card__chart-area"
+                    d="M 12 70 C 24 54, 36 26, 50 32 C 64 38, 72 72, 88 66 C 104 60, 106 20, 124 18 C 142 16, 150 56, 168 50 C 186 44, 190 28, 208 24 L 208 88 L 12 88 Z"
+                  ></path>
+                  <path
+                    class="hero-float-card__chart-line"
+                    d="M 12 70 C 24 54, 36 26, 50 32 C 64 38, 72 72, 88 66 C 104 60, 106 20, 124 18 C 142 16, 150 56, 168 50 C 186 44, 190 28, 208 24"
+                  ></path>
+                  <circle
+                    class="hero-float-card__chart-point"
+                    cx="124"
+                    cy="18"
+                    r="4"
+                  ></circle>
+                  <circle
+                    class="hero-float-card__chart-point hero-float-card__chart-point--end"
+                    cx="208"
+                    cy="24"
+                    r="4.5"
+                  ></circle>
+                </svg>
               </div>
-              <div class="agency-intro__avatars" aria-hidden="true">
-                <span class="agency-intro__avatar">GA</span>
-                <span class="agency-intro__avatar">MA</span>
-                <span class="agency-intro__avatar">CRO</span>
-                <span class="agency-intro__avatar agency-intro__avatar--count" data-count-up data-count-target="32" data-count-suffix="+">0+</span>
+              <div class="hero-float-card__metric">
+                <strong
+                  data-count-up
+                  data-count-target="98.7"
+                  data-count-decimals="1"
+                  data-count-suffix="%"
+                  >0.0%</strong
+                >
+                <p>lead-to-demo completion</p>
               </div>
             </article>
 
-            <div class="agency-intro__content">
-              <span class="eyebrow">Agency Positioning</span>
-              <h2>Built for teams that need <span>better demand generation</span>, cleaner tracking, and landing pages that convert paid traffic into real pipeline.</h2>
-              <p class="agency-intro__lead">We combine Google Ads, Meta Ads, remarketing, CRO, landing-page strategy, GA4, GTM, and reporting into one operating model. Instead of treating traffic, conversion, and measurement as separate problems, we align them into a system that improves lead quality and makes decisions easier.</p>
-              <a class="agency-intro__link" href="services.html">Explore our capabilities</a>
-            </div>
-          </div>
+            <article class="hero-float-card hero-float-card--right">
+              <span class="hero-float-card__label">Revenue Growth</span>
+              <div class="hero-float-card__bars" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </article>
 
-          <div class="agency-intro__logos" aria-label="Services we provide">
-            <div class="agency-intro__logos-track">
-              <span>Google Ads Management</span>
-              <span>Meta Ads Campaigns</span>
-              <span>Landing Page Strategy</span>
-              <span>Conversion Rate Optimization</span>
-              <span>GA4 &amp; GTM Setup</span>
-              <span>Looker Studio Reporting</span>
-              <span>Remarketing Campaigns</span>
-              <span>Creative Testing</span>
-              <span aria-hidden="true">Google Ads Management</span>
-              <span aria-hidden="true">Meta Ads Campaigns</span>
-              <span aria-hidden="true">Landing Page Strategy</span>
-              <span aria-hidden="true">Conversion Rate Optimization</span>
-              <span aria-hidden="true">GA4 &amp; GTM Setup</span>
-              <span aria-hidden="true">Looker Studio Reporting</span>
-              <span aria-hidden="true">Remarketing Campaigns</span>
-              <span aria-hidden="true">Creative Testing</span>
+            <div class="hero-signal" aria-label="Core platforms and tools">
+              <span class="hero-signal__label">Core stack</span>
+              <p>Google Ads, Meta Ads, GA4, GTM, landing pages, and CRO.</p>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section section--service-showcase">
-      <div class="section-shell">
-        <div class="service-showcase reveal" data-service-showcase>
-          <div class="service-showcase__decor service-showcase__decor--left" aria-hidden="true"></div>
-          <div class="service-showcase__decor service-showcase__decor--right" aria-hidden="true"></div>
+      <section class="section section--tight section--agency-intro">
+        <div class="section-shell">
+          <div class="agency-intro reveal">
+            <span
+              class="agency-intro__lines agency-intro__lines--left"
+              aria-hidden="true"
+            ></span>
+            <span
+              class="agency-intro__lines agency-intro__lines--right"
+              aria-hidden="true"
+            ></span>
 
-          <div class="service-showcase__head">
-            <span class="eyebrow eyebrow--light">Capability Focus</span>
-            <h2>Our approach to <span>performance growth</span> is channel-aware, conversion-focused, and built around measurable demand.</h2>
-          </div>
+            <div class="agency-intro__panel">
+              <article class="agency-intro__proof">
+                <div class="agency-intro__proof-surface">
+                  <strong
+                    data-count-up
+                    data-count-target="920"
+                    data-count-suffix="+"
+                    >0+</strong
+                  >
+                  <p>
+                    Google Ads launches, Meta campaigns, landing-page rebuilds,
+                    GA4 fixes, and CRO updates shipped with clear performance
+                    ownership.
+                  </p>
+                </div>
+                <div class="agency-intro__avatars" aria-hidden="true">
+                  <span class="agency-intro__avatar">GA</span>
+                  <span class="agency-intro__avatar">MA</span>
+                  <span class="agency-intro__avatar">CRO</span>
+                  <span
+                    class="agency-intro__avatar agency-intro__avatar--count"
+                    data-count-up
+                    data-count-target="32"
+                    data-count-suffix="+"
+                    >0+</span
+                  >
+                </div>
+              </article>
 
-          <div class="service-showcase__panel">
-            <div class="service-showcase__nav" role="tablist" aria-label="Service categories">
-              <button class="service-showcase__tab is-active" type="button" role="tab" aria-selected="true" data-service-tab="google-ads">Google Ads Management</button>
-              <button class="service-showcase__tab" type="button" role="tab" aria-selected="false" data-service-tab="meta-ads">Meta Ads Campaigns</button>
-              <button class="service-showcase__tab" type="button" role="tab" aria-selected="false" data-service-tab="landing-pages">Landing Pages &amp; CRO</button>
-              <button class="service-showcase__tab" type="button" role="tab" aria-selected="false" data-service-tab="seo-content">SEO &amp; Commercial Content</button>
-              <button class="service-showcase__tab" type="button" role="tab" aria-selected="false" data-service-tab="analytics">Analytics &amp; Attribution</button>
-              <button class="service-showcase__tab" type="button" role="tab" aria-selected="false" data-service-tab="remarketing">Remarketing &amp; Retention</button>
+              <div class="agency-intro__content">
+                <span class="eyebrow">Agency Positioning</span>
+                <h2>
+                  Built for teams that need
+                  <span>better demand generation</span>, cleaner tracking, and
+                  landing pages that convert paid traffic into real pipeline.
+                </h2>
+                <p class="agency-intro__lead">
+                  We combine Google Ads, Meta Ads, remarketing, CRO,
+                  landing-page strategy, GA4, GTM, and reporting into one
+                  operating model. Instead of treating traffic, conversion, and
+                  measurement as separate problems, we align them into a system
+                  that improves lead quality and makes decisions easier.
+                </p>
+                <a class="agency-intro__link" href="services.html"
+                  >Explore our capabilities</a
+                >
+              </div>
             </div>
 
-            <article class="service-showcase__card" data-service-panel>
+            <div class="agency-intro__logos" aria-label="Services we provide">
+              <div class="agency-intro__logos-track">
+                <span>Google Ads Management</span>
+                <span>Meta Ads Campaigns</span>
+                <span>Landing Page Strategy</span>
+                <span>Conversion Rate Optimization</span>
+                <span>GA4 &amp; GTM Setup</span>
+                <span>Looker Studio Reporting</span>
+                <span>Remarketing Campaigns</span>
+                <span>Creative Testing</span>
+                <span aria-hidden="true">Google Ads Management</span>
+                <span aria-hidden="true">Meta Ads Campaigns</span>
+                <span aria-hidden="true">Landing Page Strategy</span>
+                <span aria-hidden="true">Conversion Rate Optimization</span>
+                <span aria-hidden="true">GA4 &amp; GTM Setup</span>
+                <span aria-hidden="true">Looker Studio Reporting</span>
+                <span aria-hidden="true">Remarketing Campaigns</span>
+                <span aria-hidden="true">Creative Testing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--service-showcase">
+        <div class="section-shell">
+          <div class="service-showcase reveal" data-service-showcase>
+            <div
+              class="service-showcase__decor service-showcase__decor--left"
+              aria-hidden="true"
+            ></div>
+            <div
+              class="service-showcase__decor service-showcase__decor--right"
+              aria-hidden="true"
+            ></div>
+
+            <div class="service-showcase__head">
+              <span class="eyebrow eyebrow--light">Capability Focus</span>
+              <h2>
+                Our approach to <span>performance growth</span> is
+                channel-aware, conversion-focused, and built around measurable
+                demand.
+              </h2>
+            </div>
+
+            <div class="service-showcase__panel">
+              <div
+                class="service-showcase__nav"
+                role="tablist"
+                aria-label="Service categories"
+              >
+                <button
+                  class="service-showcase__tab is-active"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                  data-service-tab="google-ads"
+                >
+                  Google Ads Management
+                </button>
+                <button
+                  class="service-showcase__tab"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  data-service-tab="meta-ads"
+                >
+                  Meta Ads Campaigns
+                </button>
+                <button
+                  class="service-showcase__tab"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  data-service-tab="landing-pages"
+                >
+                  Landing Pages &amp; CRO
+                </button>
+                <button
+                  class="service-showcase__tab"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  data-service-tab="seo-content"
+                >
+                  SEO &amp; Commercial Content
+                </button>
+                <button
+                  class="service-showcase__tab"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  data-service-tab="analytics"
+                >
+                  Analytics &amp; Attribution
+                </button>
+                <button
+                  class="service-showcase__tab"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  data-service-tab="remarketing"
+                >
+                  Remarketing &amp; Retention
+                </button>
+              </div>
+
+              <article class="service-showcase__card" data-service-panel>
                 <div class="service-showcase__media">
-                  <div class="service-showcase__media-badge" data-service-badge>Google Ads Management</div>
-                  <div class="service-showcase__media-placeholder" data-service-media>
+                  <div class="service-showcase__media-badge" data-service-badge>
+                    Google Ads Management
+                  </div>
+                  <div
+                    class="service-showcase__media-placeholder"
+                    data-service-media
+                  >
                     <img
                       class="service-showcase__media-image"
                       src="img/services/main-page/google-ads.jpg"
@@ -219,378 +455,803 @@
                 </div>
 
                 <div class="service-showcase__body">
-                  <div class="service-showcase__icon is-brand" aria-hidden="true" data-service-icon>
+                  <div
+                    class="service-showcase__icon is-brand"
+                    aria-hidden="true"
+                    data-service-icon
+                  >
                     <i class="fa-brands fa-google"></i>
                   </div>
-                <h3 data-service-title>Google Ads systems built for qualified demand that converts, not vanity traffic.</h3>
-                <p data-service-copy>Paid search built around lead quality, efficiency, and cleaner decision-making.</p>
-                <ul class="service-showcase__list" data-service-list>
-                  <li>Search and Performance Max structure</li>
-                  <li>Landing-page and form-flow alignment</li>
-                  <li>Budget and search-term cleanup</li>
-                </ul>
-                <a class="service-showcase__link" href="service-detail.html" data-service-link>View service detail</a>
+                  <h3 data-service-title>
+                    Google Ads systems built for qualified demand that converts,
+                    not vanity traffic.
+                  </h3>
+                  <p data-service-copy>
+                    Paid search built around lead quality, efficiency, and
+                    cleaner decision-making.
+                  </p>
+                  <ul class="service-showcase__list" data-service-list>
+                    <li>Search and Performance Max structure</li>
+                    <li>Landing-page and form-flow alignment</li>
+                    <li>Budget and search-term cleanup</li>
+                  </ul>
+                  <a
+                    class="service-showcase__link"
+                    href="service-detail.html"
+                    data-service-link
+                    >View service detail</a
+                  >
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--legacy-choice">
+        <div class="section-shell">
+          <div class="section-head reveal">
+            <span class="eyebrow">Why Clients Choose Us</span>
+            <h2>
+              Because the problem is usually not just “we need more traffic.”
+            </h2>
+          </div>
+          <div class="choice-grid">
+            <article class="choice-card reveal">
+              <h3>Platform depth</h3>
+              <p>
+                We work inside the real tools: Google Ads, Meta Ads Manager,
+                GA4, GTM, Search Console, and Looker Studio.
+              </p>
+            </article>
+            <article class="choice-card reveal">
+              <h3>Landing-page accountability</h3>
+              <p>
+                We do not separate media buying from the page experience that
+                determines whether clicks convert.
+              </p>
+            </article>
+            <article class="choice-card reveal">
+              <h3>Cross-channel planning</h3>
+              <p>
+                Paid search, paid social, SEO, remarketing, and email support
+                are planned as connected channel roles.
+              </p>
+            </article>
+            <article class="choice-card reveal">
+              <h3>Measurement discipline</h3>
+              <p>
+                We fix broken event setups, soft conversions, and reporting
+                noise before pretending the dashboard means anything.
+              </p>
+            </article>
+            <article class="choice-card reveal">
+              <h3>Commercial focus</h3>
+              <p>
+                The work is tied to qualified leads, booked calls, revenue
+                pages, cost efficiency, and sales feedback.
+              </p>
+            </article>
+            <article class="choice-card reveal">
+              <h3>Senior execution</h3>
+              <p>
+                Clients get strategic thinking and direct implementation, not
+                generic account babysitting.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--why-us">
+        <div class="section-shell">
+          <div class="why-us reveal">
+            <div class="why-us__visual">
+              <div class="why-us__backdrop" aria-hidden="true"></div>
+              <img
+                class="why-us__image"
+                src="img/home/why.png"
+                alt="Northstar Metric team member holding a megaphone"
+              />
+              <div class="why-us__stat-card" aria-hidden="true">
+                <span class="why-us__stat-label">Funnel Visibility</span>
+                <div class="why-us__stat-chart">
+                  <span class="why-us__stat-ring"></span>
+                  <div class="why-us__stat-lines">
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="why-us__content">
+              <h2>
+                Build a <span>stronger growth system</span> across paid media,
+                landing pages, and performance reporting.
+              </h2>
+              <p class="why-us__lead">
+                Most accounts do not need another layer of activity. They need
+                cleaner structure, better landing-page alignment, and tracking
+                that leadership can actually trust. We connect Google Ads, Meta
+                Ads, CRO, and analytics into one operating model that improves
+                lead quality and makes scale decisions clearer.
+              </p>
+              <ul class="why-us__list">
+                <li>
+                  Paid media decisions tied to sales intent, not soft vanity
+                  metrics
+                </li>
+                <li>
+                  Landing-page and form-flow responsibility built into campaign
+                  execution
+                </li>
+                <li>
+                  GA4, GTM, and reporting fixed before performance gets
+                  overstated
+                </li>
+                <li>
+                  Senior strategic oversight with direct implementation and
+                  iteration
+                </li>
+              </ul>
+              <a class="button button--accent why-us__cta" href="services.html"
+                >See how we work</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section section--signal-marquee"
+        aria-label="Core growth capabilities"
+      >
+        <div class="signal-marquee">
+          <div class="signal-marquee__row signal-marquee__row--top">
+            <div class="signal-marquee__track">
+              <span class="signal-marquee__item is-outline"
+                ><i class="fa-brands fa-google" aria-hidden="true"></i
+                ><span>GOOGLE ADS</span></span
+              >
+              <span class="signal-marquee__item is-solid"
+                ><i class="fa-brands fa-meta" aria-hidden="true"></i
+                ><span>META ADS</span></span
+              >
+              <span class="signal-marquee__item is-outline"
+                ><i
+                  class="fa-solid fa-magnifying-glass-chart"
+                  aria-hidden="true"
+                ></i
+                ><span>SEO</span></span
+              >
+              <span class="signal-marquee__item is-solid"
+                ><i class="fa-solid fa-chart-line" aria-hidden="true"></i
+                ><span>ANALYTICS</span></span
+              >
+              <span class="signal-marquee__item is-outline"
+                ><i class="fa-solid fa-window-maximize" aria-hidden="true"></i
+                ><span>LANDING PAGES</span></span
+              >
+              <span class="signal-marquee__item is-solid"
+                ><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i
+                ><span>REMARKETING</span></span
+              >
+              <span class="signal-marquee__item is-outline"
+                ><i class="fa-solid fa-bullseye" aria-hidden="true"></i
+                ><span>CRO</span></span
+              >
+
+              <span class="signal-marquee__item is-outline" aria-hidden="true"
+                ><i class="fa-brands fa-google"></i
+                ><span>GOOGLE ADS</span></span
+              >
+              <span class="signal-marquee__item is-solid" aria-hidden="true"
+                ><i class="fa-brands fa-meta"></i><span>META ADS</span></span
+              >
+              <span class="signal-marquee__item is-outline" aria-hidden="true"
+                ><i class="fa-solid fa-magnifying-glass-chart"></i
+                ><span>SEO</span></span
+              >
+              <span class="signal-marquee__item is-solid" aria-hidden="true"
+                ><i class="fa-solid fa-chart-line"></i
+                ><span>ANALYTICS</span></span
+              >
+              <span class="signal-marquee__item is-outline" aria-hidden="true"
+                ><i class="fa-solid fa-window-maximize"></i
+                ><span>LANDING PAGES</span></span
+              >
+              <span class="signal-marquee__item is-solid" aria-hidden="true"
+                ><i class="fa-solid fa-arrows-rotate"></i
+                ><span>REMARKETING</span></span
+              >
+              <span class="signal-marquee__item is-outline" aria-hidden="true"
+                ><i class="fa-solid fa-bullseye"></i><span>CRO</span></span
+              >
+            </div>
+          </div>
+
+          <div class="signal-marquee__row signal-marquee__row--bottom">
+            <div class="signal-marquee__track">
+              <span class="signal-marquee__item is-outline"
+                ><i class="fa-solid fa-chart-pie" aria-hidden="true"></i
+                ><span>GA4</span></span
+              >
+              <span class="signal-marquee__item is-solid"
+                ><i class="fa-solid fa-diagram-project" aria-hidden="true"></i
+                ><span>GTM</span></span
+              >
+              <span class="signal-marquee__item is-outline"
+                ><i class="fa-solid fa-layer-group" aria-hidden="true"></i
+                ><span>FUNNEL DESIGN</span></span
+              >
+              <span class="signal-marquee__item is-solid"
+                ><i class="fa-solid fa-filter" aria-hidden="true"></i
+                ><span>LEAD QUALITY</span></span
+              >
+              <span class="signal-marquee__item is-outline"
+                ><i class="fa-solid fa-chart-column" aria-hidden="true"></i
+                ><span>PIPELINE REPORTING</span></span
+              >
+              <span class="signal-marquee__item is-solid"
+                ><i class="fa-solid fa-crosshairs" aria-hidden="true"></i
+                ><span>CAMPAIGN STRATEGY</span></span
+              >
+              <span class="signal-marquee__item is-outline"
+                ><i class="fa-solid fa-bezier-curve" aria-hidden="true"></i
+                ><span>CREATIVE TESTING</span></span
+              >
+
+              <span class="signal-marquee__item is-outline" aria-hidden="true"
+                ><i class="fa-solid fa-chart-pie"></i><span>GA4</span></span
+              >
+              <span class="signal-marquee__item is-solid" aria-hidden="true"
+                ><i class="fa-solid fa-diagram-project"></i
+                ><span>GTM</span></span
+              >
+              <span class="signal-marquee__item is-outline" aria-hidden="true"
+                ><i class="fa-solid fa-layer-group"></i
+                ><span>FUNNEL DESIGN</span></span
+              >
+              <span class="signal-marquee__item is-solid" aria-hidden="true"
+                ><i class="fa-solid fa-filter"></i
+                ><span>LEAD QUALITY</span></span
+              >
+              <span class="signal-marquee__item is-outline" aria-hidden="true"
+                ><i class="fa-solid fa-chart-column"></i
+                ><span>PIPELINE REPORTING</span></span
+              >
+              <span class="signal-marquee__item is-solid" aria-hidden="true"
+                ><i class="fa-solid fa-crosshairs"></i
+                ><span>CAMPAIGN STRATEGY</span></span
+              >
+              <span class="signal-marquee__item is-outline" aria-hidden="true"
+                ><i class="fa-solid fa-bezier-curve"></i
+                ><span>CREATIVE TESTING</span></span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--legacy-process">
+        <div class="section-shell">
+          <div class="section-head reveal">
+            <span class="eyebrow">Process</span>
+            <h2>A tighter workflow from audit to optimization.</h2>
+          </div>
+          <div class="process-flow">
+            <article class="process-card reveal">
+              <span class="process-step">01 Audit</span>
+              <h3>Review traffic, campaigns, pages, and tracking.</h3>
+              <p>
+                We assess ad accounts, keyword intent, audience structure,
+                landing pages, GA4 setup, conversion events, and reporting gaps.
+              </p>
+            </article>
+            <article class="process-card reveal">
+              <span class="process-step">02 Strategy</span>
+              <h3>
+                Prioritize the channels and fixes with the highest leverage.
+              </h3>
+              <p>
+                That may mean rebuilding Google Ads structure, tightening Meta
+                targeting, rewriting key pages, or correcting analytics before
+                scaling.
+              </p>
+            </article>
+            <article class="process-card reveal">
+              <span class="process-step">03 Launch</span>
+              <h3>
+                Ship campaigns and page improvements with clear ownership.
+              </h3>
+              <p>
+                Campaigns, creative tests, page updates, and tracking fixes are
+                launched as one coordinated workstream.
+              </p>
+            </article>
+            <article class="process-card reveal">
+              <span class="process-step">04 Optimize</span>
+              <h3>
+                Improve based on search terms, conversion behavior, and lead
+                quality.
+              </h3>
+              <p>
+                We refine bids, exclusions, audience segments, creatives,
+                offers, forms, and call-to-action paths using live performance
+                data.
+              </p>
+            </article>
+            <article class="process-card reveal">
+              <span class="process-step">05 Report</span>
+              <h3>Turn performance into decisions.</h3>
+              <p>
+                Leadership gets a clear read on what is driving qualified
+                demand, what is underperforming, and where budget should move
+                next.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--work-model">
+        <div class="section-shell">
+          <div class="work-model reveal">
+            <div class="work-model__content">
+              <h2>
+                The operating system for your <span>business growth</span>.
+              </h2>
+              <p class="work-model__lead">
+                We do not treat media buying, page experience, and measurement
+                as separate projects. The work is structured as one operating
+                model so paid traffic, conversion flow, and reporting all
+                improve together instead of fighting each other.
+              </p>
+
+              <div
+                class="work-model__metrics"
+                aria-label="Performance priorities"
+              >
+                <div class="work-model__metric">
+                  <div class="work-model__metric-head">
+                    <span>Tracking Integrity</span>
+                    <strong>94%</strong>
+                  </div>
+                  <div class="work-model__bar">
+                    <span style="width: 94%"></span>
+                  </div>
+                </div>
+
+                <div class="work-model__metric">
+                  <div class="work-model__metric-head">
+                    <span>Landing Page Alignment</span>
+                    <strong>88%</strong>
+                  </div>
+                  <div class="work-model__bar">
+                    <span style="width: 88%"></span>
+                  </div>
+                </div>
+
+                <div class="work-model__metric">
+                  <div class="work-model__metric-head">
+                    <span>Lead Quality Feedback Loop</span>
+                    <strong>82%</strong>
+                  </div>
+                  <div class="work-model__bar">
+                    <span style="width: 82%"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="work-model__visual">
+              <div class="work-model__dots" aria-hidden="true"></div>
+
+              <img
+                class="work-model__image"
+                src="img/home/process.jpg"
+                alt="Northstar Metric specialist reviewing growth performance on a laptop"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--legacy-cases">
+        <div class="section-shell">
+          <div class="section-head reveal">
+            <span class="eyebrow">Representative Engagements</span>
+            <h2>Examples of the type of work we actually do.</h2>
+          </div>
+          <div class="cases-grid">
+            <article class="case-card reveal">
+              <div class="case-meta">
+                <span>SaaS</span><span>Google Ads + CRO</span>
+              </div>
+              <h3>
+                Google Ads performance improved after restructuring campaigns
+                around product intent.
+              </h3>
+              <p>
+                We split broad campaign groups into tighter intent clusters,
+                rebuilt landing pages for demo conversion, and improved
+                negative-keyword controls to reduce low-fit traffic.
+              </p>
+            </article>
+            <article class="case-card reveal">
+              <div class="case-meta">
+                <span>Professional Services</span
+                ><span>SEO + Service Pages</span>
+              </div>
+              <h3>
+                SEO became more commercial after rewriting the revenue pages,
+                not just publishing articles.
+              </h3>
+              <p>
+                We improved page hierarchy, search intent match, internal
+                linking, and location relevance so organic traffic landed on
+                pages that could actually convert.
+              </p>
+            </article>
+            <article class="case-card reveal">
+              <div class="case-meta">
+                <span>Multi-location Brand</span><span>GA4 + Paid Social</span>
+              </div>
+              <h3>
+                Leadership got clearer visibility into location-level
+                performance.
+              </h3>
+              <p>
+                We cleaned up tracking, standardized key events, and rebuilt
+                reporting so paid social results could be evaluated by lead
+                quality and geography, not just click volume.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--brand-transform">
+        <div class="section-shell">
+          <div class="brand-transform reveal" data-brand-transform>
+            <div class="brand-transform__head">
+              <h2>See how we've transformed <span>brands online</span>.</h2>
+            </div>
+
+            <div class="brand-transform__stage">
+              <button
+                class="brand-transform__control brand-transform__control--prev"
+                type="button"
+                aria-label="Previous case"
+                data-brand-prev
+              >
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+              </button>
+              <div class="brand-transform__viewport" data-brand-viewport>
+                <div class="brand-transform__track" data-brand-track></div>
+              </div>
+              <button
+                class="brand-transform__control brand-transform__control--next"
+                type="button"
+                aria-label="Next case"
+                data-brand-next
+              >
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </button>
+            </div>
+
+            <div class="brand-transform__dots" aria-label="Showcase navigation">
+              <button
+                class="brand-transform__dot is-active"
+                type="button"
+                aria-label="Show slide 1"
+                data-brand-dot="0"
+              ></button>
+              <button
+                class="brand-transform__dot"
+                type="button"
+                aria-label="Show slide 2"
+                data-brand-dot="1"
+              ></button>
+              <button
+                class="brand-transform__dot"
+                type="button"
+                aria-label="Show slide 3"
+                data-brand-dot="2"
+              ></button>
+              <button
+                class="brand-transform__dot"
+                type="button"
+                aria-label="Show slide 4"
+                data-brand-dot="3"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-shell">
+          <div class="section-head reveal">
+            <span class="eyebrow">Impact</span>
+            <h2>The operational gains clients usually care about most.</h2>
+          </div>
+          <div class="metrics-grid">
+            <article class="metric-card reveal">
+              <span class="metric-card__label">Paid efficiency</span>
+              <strong>Lower waste</strong>
+              <p>
+                Less irrelevant traffic after keyword cleanup, negative lists,
+                audience refinement, and better platform segmentation.
+              </p>
+            </article>
+            <article class="metric-card reveal">
+              <span class="metric-card__label">Lead quality</span>
+              <strong>Better fit</strong>
+              <p>
+                Stronger message match between ads, offers, and landing pages
+                typically improves the quality of inbound inquiries.
+              </p>
+            </article>
+            <article class="metric-card reveal">
+              <span class="metric-card__label">Conversion flow</span>
+              <strong>Less friction</strong>
+              <p>
+                Sharper page structure, clearer proof, better form logic, and
+                more direct calls to action improve response rates.
+              </p>
+            </article>
+            <article class="metric-card reveal">
+              <span class="metric-card__label">Reporting clarity</span>
+              <strong>More usable</strong>
+              <p>
+                GA4 and dashboard cleanup make it easier to see which channels
+                deserve scale and which ones need correction.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-shell">
+          <div class="section-head reveal">
+            <span class="eyebrow">Insights</span>
+            <h2>Topics we regularly help clients untangle.</h2>
+          </div>
+          <div class="insights-grid">
+            <article class="insight-card reveal">
+              <span class="insight-card__meta">Google Ads</span>
+              <h3>
+                Why campaign performance drops when one landing page tries to
+                serve every keyword.
+              </h3>
+              <p>
+                Search intent needs message continuity. A generic page usually
+                weakens relevance, confidence, and conversion rate at the same
+                time.
+              </p>
+            </article>
+            <article class="insight-card reveal">
+              <span class="insight-card__meta">Analytics</span>
+              <h3>Why GA4 often tells teams less than they think.</h3>
+              <p>
+                Broken events, duplicated conversions, weak attribution
+                assumptions, and vanity dashboards create false confidence very
+                quickly.
+              </p>
+            </article>
+            <article class="insight-card reveal">
+              <span class="insight-card__meta">SEO + CRO</span>
+              <h3>
+                Why more traffic does not matter if service pages do not
+                convert.
+              </h3>
+              <p>
+                Search growth becomes commercially useful only when the target
+                pages carry real trust, clear structure, and the right action
+                path.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-shell">
+          <div class="section-head reveal">
+            <span class="eyebrow">Frequently Asked Questions</span>
+            <h2>Questions we hear from businesses comparing agencies.</h2>
+          </div>
+          <div class="grid">
+            <article class="faq-item reveal" data-faq-item>
+              <button
+                class="faq-question"
+                type="button"
+                aria-expanded="false"
+                data-faq-question
+              >
+                <span>Do you manage Google Ads directly?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. We work directly in Google Ads, including campaign
+                  structure, keyword strategy, negatives, bidding logic, asset
+                  groups, remarketing, and landing-page alignment.
+                </p>
+              </div>
+            </article>
+            <article class="faq-item reveal" data-faq-item>
+              <button
+                class="faq-question"
+                type="button"
+                aria-expanded="false"
+                data-faq-question
+              >
+                <span>What other paid platforms do you support?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Depending on fit, we support Meta Ads, YouTube Ads, LinkedIn
+                  Ads, and retargeting programs alongside Google Ads. The right
+                  mix depends on offer, audience, budget, and buying cycle.
+                </p>
+              </div>
+            </article>
+            <article class="faq-item reveal" data-faq-item>
+              <button
+                class="faq-question"
+                type="button"
+                aria-expanded="false"
+                data-faq-question
+              >
+                <span
+                  >Do you also work on landing pages and conversion rate
+                  optimization?</span
+                >
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. We regularly improve landing-page structure, service
+                  pages, message flow, forms, proof sections, and calls to
+                  action because media performance and page performance are
+                  inseparable.
+                </p>
+              </div>
+            </article>
+            <article class="faq-item reveal" data-faq-item>
+              <button
+                class="faq-question"
+                type="button"
+                aria-expanded="false"
+                data-faq-question
+              >
+                <span>How do you handle analytics and reporting?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  We use GA4, Google Tag Manager, platform data, and Looker
+                  Studio reporting to create clearer visibility into traffic
+                  quality, conversion behavior, and channel performance.
+                </p>
+              </div>
+            </article>
+            <article class="faq-item reveal" data-faq-item>
+              <button
+                class="faq-question"
+                type="button"
+                aria-expanded="false"
+                data-faq-question
+              >
+                <span>Can you work with an internal team?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. We often work alongside internal marketers, designers, or
+                  sales teams when businesses want stronger strategic direction
+                  without replacing existing capacity.
+                </p>
               </div>
             </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section section--legacy-choice">
-      <div class="section-shell">
-        <div class="section-head reveal">
-          <span class="eyebrow">Why Clients Choose Us</span>
-          <h2>Because the problem is usually not just “we need more traffic.”</h2>
-        </div>
-        <div class="choice-grid">
-          <article class="choice-card reveal">
-            <h3>Platform depth</h3>
-            <p>We work inside the real tools: Google Ads, Meta Ads Manager, GA4, GTM, Search Console, and Looker Studio.</p>
-          </article>
-          <article class="choice-card reveal">
-            <h3>Landing-page accountability</h3>
-            <p>We do not separate media buying from the page experience that determines whether clicks convert.</p>
-          </article>
-          <article class="choice-card reveal">
-            <h3>Cross-channel planning</h3>
-            <p>Paid search, paid social, SEO, remarketing, and email support are planned as connected channel roles.</p>
-          </article>
-          <article class="choice-card reveal">
-            <h3>Measurement discipline</h3>
-            <p>We fix broken event setups, soft conversions, and reporting noise before pretending the dashboard means anything.</p>
-          </article>
-          <article class="choice-card reveal">
-            <h3>Commercial focus</h3>
-            <p>The work is tied to qualified leads, booked calls, revenue pages, cost efficiency, and sales feedback.</p>
-          </article>
-          <article class="choice-card reveal">
-            <h3>Senior execution</h3>
-            <p>Clients get strategic thinking and direct implementation, not generic account babysitting.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--why-us">
-      <div class="section-shell">
-        <div class="why-us reveal">
-          <div class="why-us__visual">
-            <div class="why-us__backdrop" aria-hidden="true"></div>
-            <img class="why-us__image" src="img/home/why.png" alt="Northstar Metric team member holding a megaphone" />
-            <div class="why-us__stat-card" aria-hidden="true">
-              <span class="why-us__stat-label">Funnel Visibility</span>
-              <div class="why-us__stat-chart">
-                <span class="why-us__stat-ring"></span>
-                <div class="why-us__stat-lines">
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
+      <section class="section">
+        <div class="section-shell">
+          <div class="cta-band reveal">
+            <span class="eyebrow">Next Step</span>
+            <h2>Need a clearer growth plan than "run more ads and hope"?</h2>
+            <p class="lead">
+              Let's review your traffic sources, campaign structure, landing
+              pages, and tracking setup to identify where growth is actually
+              being lost.
+            </p>
+            <div class="hero-actions" style="margin-top: 1.2rem">
+              <a class="button button--accent" href="contact.html"
+                >Book a Strategy Call</a
+              >
+              <a class="button-ghost" href="about.html">Meet the Agency</a>
             </div>
           </div>
+        </div>
+      </section>
+    </main>
 
-          <div class="why-us__content">
-            <h2>Build a <span>stronger growth system</span> across paid media, landing pages, and performance reporting.</h2>
-            <p class="why-us__lead">Most accounts do not need another layer of activity. They need cleaner structure, better landing-page alignment, and tracking that leadership can actually trust. We connect Google Ads, Meta Ads, CRO, and analytics into one operating model that improves lead quality and makes scale decisions clearer.</p>
-            <ul class="why-us__list">
-              <li>Paid media decisions tied to sales intent, not soft vanity metrics</li>
-              <li>Landing-page and form-flow responsibility built into campaign execution</li>
-              <li>GA4, GTM, and reporting fixed before performance gets overstated</li>
-              <li>Senior strategic oversight with direct implementation and iteration</li>
+    <footer class="site-footer">
+      <div class="footer-shell">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <a class="brand-mark" href="index.html"
+              ><span class="brand-mark__dot" aria-hidden="true"></span
+              ><span class="brand-mark__name">Northstar Metric</span></a
+            >
+            <p style="margin-top: 1rem">
+              A marketing agency focused on paid acquisition, SEO, landing
+              pages, CRO, tracking, and reporting for companies that need
+              measurable performance.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h3>Navigation</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
             </ul>
-            <a class="button button--accent why-us__cta" href="services.html">See how we work</a>
+          </div>
+          <div class="footer-col">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li><a href="service-detail.html">Paid Advertising</a></li>
+              <li><a href="services.html">SEO</a></li>
+              <li><a href="services.html">Web Design &amp; CRO</a></li>
+              <li><a href="services.html">Analytics &amp; Reporting</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Legal</h3>
+            <ul class="footer-links">
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+              <li><a href="cookie.html">Cookie Policy</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Contact</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="mailto:hello@northstarmetric.com"
+                  >hello@northstarmetric.com</a
+                >
+              </li>
+              <li><a href="tel:+12125550148">+1 (212) 555-0148</a></li>
+              <li>North America &amp; remote-first delivery</li>
+              <li>Trusted by teams that need clarity before scale.</li>
+            </ul>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="section section--signal-marquee" aria-label="Core growth capabilities">
-      <div class="signal-marquee">
-        <div class="signal-marquee__row signal-marquee__row--top">
-          <div class="signal-marquee__track">
-            <span class="signal-marquee__item is-outline"><i class="fa-brands fa-google" aria-hidden="true"></i><span>GOOGLE ADS</span></span>
-            <span class="signal-marquee__item is-solid"><i class="fa-brands fa-meta" aria-hidden="true"></i><span>META ADS</span></span>
-            <span class="signal-marquee__item is-outline"><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i><span>SEO</span></span>
-            <span class="signal-marquee__item is-solid"><i class="fa-solid fa-chart-line" aria-hidden="true"></i><span>ANALYTICS</span></span>
-            <span class="signal-marquee__item is-outline"><i class="fa-solid fa-window-maximize" aria-hidden="true"></i><span>LANDING PAGES</span></span>
-            <span class="signal-marquee__item is-solid"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i><span>REMARKETING</span></span>
-            <span class="signal-marquee__item is-outline"><i class="fa-solid fa-bullseye" aria-hidden="true"></i><span>CRO</span></span>
-
-            <span class="signal-marquee__item is-outline" aria-hidden="true"><i class="fa-brands fa-google"></i><span>GOOGLE ADS</span></span>
-            <span class="signal-marquee__item is-solid" aria-hidden="true"><i class="fa-brands fa-meta"></i><span>META ADS</span></span>
-            <span class="signal-marquee__item is-outline" aria-hidden="true"><i class="fa-solid fa-magnifying-glass-chart"></i><span>SEO</span></span>
-            <span class="signal-marquee__item is-solid" aria-hidden="true"><i class="fa-solid fa-chart-line"></i><span>ANALYTICS</span></span>
-            <span class="signal-marquee__item is-outline" aria-hidden="true"><i class="fa-solid fa-window-maximize"></i><span>LANDING PAGES</span></span>
-            <span class="signal-marquee__item is-solid" aria-hidden="true"><i class="fa-solid fa-arrows-rotate"></i><span>REMARKETING</span></span>
-            <span class="signal-marquee__item is-outline" aria-hidden="true"><i class="fa-solid fa-bullseye"></i><span>CRO</span></span>
-          </div>
-        </div>
-
-        <div class="signal-marquee__row signal-marquee__row--bottom">
-          <div class="signal-marquee__track">
-            <span class="signal-marquee__item is-outline"><i class="fa-solid fa-chart-pie" aria-hidden="true"></i><span>GA4</span></span>
-            <span class="signal-marquee__item is-solid"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i><span>GTM</span></span>
-            <span class="signal-marquee__item is-outline"><i class="fa-solid fa-layer-group" aria-hidden="true"></i><span>FUNNEL DESIGN</span></span>
-            <span class="signal-marquee__item is-solid"><i class="fa-solid fa-filter" aria-hidden="true"></i><span>LEAD QUALITY</span></span>
-            <span class="signal-marquee__item is-outline"><i class="fa-solid fa-chart-column" aria-hidden="true"></i><span>PIPELINE REPORTING</span></span>
-            <span class="signal-marquee__item is-solid"><i class="fa-solid fa-crosshairs" aria-hidden="true"></i><span>CAMPAIGN STRATEGY</span></span>
-            <span class="signal-marquee__item is-outline"><i class="fa-solid fa-bezier-curve" aria-hidden="true"></i><span>CREATIVE TESTING</span></span>
-
-            <span class="signal-marquee__item is-outline" aria-hidden="true"><i class="fa-solid fa-chart-pie"></i><span>GA4</span></span>
-            <span class="signal-marquee__item is-solid" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i><span>GTM</span></span>
-            <span class="signal-marquee__item is-outline" aria-hidden="true"><i class="fa-solid fa-layer-group"></i><span>FUNNEL DESIGN</span></span>
-            <span class="signal-marquee__item is-solid" aria-hidden="true"><i class="fa-solid fa-filter"></i><span>LEAD QUALITY</span></span>
-            <span class="signal-marquee__item is-outline" aria-hidden="true"><i class="fa-solid fa-chart-column"></i><span>PIPELINE REPORTING</span></span>
-            <span class="signal-marquee__item is-solid" aria-hidden="true"><i class="fa-solid fa-crosshairs"></i><span>CAMPAIGN STRATEGY</span></span>
-            <span class="signal-marquee__item is-outline" aria-hidden="true"><i class="fa-solid fa-bezier-curve"></i><span>CREATIVE TESTING</span></span>
-          </div>
+        <div class="footer-base">
+          <p>
+            &copy; <span data-year></span> Northstar Metric. All rights
+            reserved.
+          </p>
+          <p>
+            Paid acquisition, SEO, CRO, and reporting with commercial focus.
+          </p>
         </div>
       </div>
-    </section>
+    </footer>
 
-    <section class="section">
-      <div class="section-shell">
-        <div class="section-head reveal">
-          <span class="eyebrow">Process</span>
-          <h2>A tighter workflow from audit to optimization.</h2>
-        </div>
-        <div class="process-flow">
-          <article class="process-card reveal">
-            <span class="process-step">01 Audit</span>
-            <h3>Review traffic, campaigns, pages, and tracking.</h3>
-            <p>We assess ad accounts, keyword intent, audience structure, landing pages, GA4 setup, conversion events, and reporting gaps.</p>
-          </article>
-          <article class="process-card reveal">
-            <span class="process-step">02 Strategy</span>
-            <h3>Prioritize the channels and fixes with the highest leverage.</h3>
-            <p>That may mean rebuilding Google Ads structure, tightening Meta targeting, rewriting key pages, or correcting analytics before scaling.</p>
-          </article>
-          <article class="process-card reveal">
-            <span class="process-step">03 Launch</span>
-            <h3>Ship campaigns and page improvements with clear ownership.</h3>
-            <p>Campaigns, creative tests, page updates, and tracking fixes are launched as one coordinated workstream.</p>
-          </article>
-          <article class="process-card reveal">
-            <span class="process-step">04 Optimize</span>
-            <h3>Improve based on search terms, conversion behavior, and lead quality.</h3>
-            <p>We refine bids, exclusions, audience segments, creatives, offers, forms, and call-to-action paths using live performance data.</p>
-          </article>
-          <article class="process-card reveal">
-            <span class="process-step">05 Report</span>
-            <h3>Turn performance into decisions.</h3>
-            <p>Leadership gets a clear read on what is driving qualified demand, what is underperforming, and where budget should move next.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-shell">
-        <div class="section-head reveal">
-          <span class="eyebrow">Representative Engagements</span>
-          <h2>Examples of the type of work we actually do.</h2>
-        </div>
-        <div class="cases-grid">
-          <article class="case-card reveal">
-            <div class="case-meta"><span>SaaS</span><span>Google Ads + CRO</span></div>
-            <h3>Google Ads performance improved after restructuring campaigns around product intent.</h3>
-            <p>We split broad campaign groups into tighter intent clusters, rebuilt landing pages for demo conversion, and improved negative-keyword controls to reduce low-fit traffic.</p>
-          </article>
-          <article class="case-card reveal">
-            <div class="case-meta"><span>Professional Services</span><span>SEO + Service Pages</span></div>
-            <h3>SEO became more commercial after rewriting the revenue pages, not just publishing articles.</h3>
-            <p>We improved page hierarchy, search intent match, internal linking, and location relevance so organic traffic landed on pages that could actually convert.</p>
-          </article>
-          <article class="case-card reveal">
-            <div class="case-meta"><span>Multi-location Brand</span><span>GA4 + Paid Social</span></div>
-            <h3>Leadership got clearer visibility into location-level performance.</h3>
-            <p>We cleaned up tracking, standardized key events, and rebuilt reporting so paid social results could be evaluated by lead quality and geography, not just click volume.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-shell">
-        <div class="section-head reveal">
-          <span class="eyebrow">Impact</span>
-          <h2>The operational gains clients usually care about most.</h2>
-        </div>
-        <div class="metrics-grid">
-          <article class="metric-card reveal">
-            <span class="metric-card__label">Paid efficiency</span>
-            <strong>Lower waste</strong>
-            <p>Less irrelevant traffic after keyword cleanup, negative lists, audience refinement, and better platform segmentation.</p>
-          </article>
-          <article class="metric-card reveal">
-            <span class="metric-card__label">Lead quality</span>
-            <strong>Better fit</strong>
-            <p>Stronger message match between ads, offers, and landing pages typically improves the quality of inbound inquiries.</p>
-          </article>
-          <article class="metric-card reveal">
-            <span class="metric-card__label">Conversion flow</span>
-            <strong>Less friction</strong>
-            <p>Sharper page structure, clearer proof, better form logic, and more direct calls to action improve response rates.</p>
-          </article>
-          <article class="metric-card reveal">
-            <span class="metric-card__label">Reporting clarity</span>
-            <strong>More usable</strong>
-            <p>GA4 and dashboard cleanup make it easier to see which channels deserve scale and which ones need correction.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-shell">
-        <div class="section-head reveal">
-          <span class="eyebrow">Insights</span>
-          <h2>Topics we regularly help clients untangle.</h2>
-        </div>
-        <div class="insights-grid">
-          <article class="insight-card reveal">
-            <span class="insight-card__meta">Google Ads</span>
-            <h3>Why campaign performance drops when one landing page tries to serve every keyword.</h3>
-            <p>Search intent needs message continuity. A generic page usually weakens relevance, confidence, and conversion rate at the same time.</p>
-          </article>
-          <article class="insight-card reveal">
-            <span class="insight-card__meta">Analytics</span>
-            <h3>Why GA4 often tells teams less than they think.</h3>
-            <p>Broken events, duplicated conversions, weak attribution assumptions, and vanity dashboards create false confidence very quickly.</p>
-          </article>
-          <article class="insight-card reveal">
-            <span class="insight-card__meta">SEO + CRO</span>
-            <h3>Why more traffic does not matter if service pages do not convert.</h3>
-            <p>Search growth becomes commercially useful only when the target pages carry real trust, clear structure, and the right action path.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-shell">
-        <div class="section-head reveal">
-          <span class="eyebrow">Frequently Asked Questions</span>
-          <h2>Questions we hear from businesses comparing agencies.</h2>
-        </div>
-        <div class="grid">
-          <article class="faq-item reveal" data-faq-item>
-            <button class="faq-question" type="button" aria-expanded="false" data-faq-question>
-              <span>Do you manage Google Ads directly?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. We work directly in Google Ads, including campaign structure, keyword strategy, negatives, bidding logic, asset groups, remarketing, and landing-page alignment.</p>
-            </div>
-          </article>
-          <article class="faq-item reveal" data-faq-item>
-            <button class="faq-question" type="button" aria-expanded="false" data-faq-question>
-              <span>What other paid platforms do you support?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Depending on fit, we support Meta Ads, YouTube Ads, LinkedIn Ads, and retargeting programs alongside Google Ads. The right mix depends on offer, audience, budget, and buying cycle.</p>
-            </div>
-          </article>
-          <article class="faq-item reveal" data-faq-item>
-            <button class="faq-question" type="button" aria-expanded="false" data-faq-question>
-              <span>Do you also work on landing pages and conversion rate optimization?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. We regularly improve landing-page structure, service pages, message flow, forms, proof sections, and calls to action because media performance and page performance are inseparable.</p>
-            </div>
-          </article>
-          <article class="faq-item reveal" data-faq-item>
-            <button class="faq-question" type="button" aria-expanded="false" data-faq-question>
-              <span>How do you handle analytics and reporting?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>We use GA4, Google Tag Manager, platform data, and Looker Studio reporting to create clearer visibility into traffic quality, conversion behavior, and channel performance.</p>
-            </div>
-          </article>
-          <article class="faq-item reveal" data-faq-item>
-            <button class="faq-question" type="button" aria-expanded="false" data-faq-question>
-              <span>Can you work with an internal team?</span>
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. We often work alongside internal marketers, designers, or sales teams when businesses want stronger strategic direction without replacing existing capacity.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-shell">
-        <div class="cta-band reveal">
-          <span class="eyebrow">Next Step</span>
-          <h2>Need a clearer growth plan than "run more ads and hope"?</h2>
-          <p class="lead">Let's review your traffic sources, campaign structure, landing pages, and tracking setup to identify where growth is actually being lost.</p>
-          <div class="hero-actions" style="margin-top: 1.2rem;">
-            <a class="button button--accent" href="contact.html">Book a Strategy Call</a>
-            <a class="button-ghost" href="about.html">Meet the Agency</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-shell">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <a class="brand-mark" href="index.html"><span class="brand-mark__dot" aria-hidden="true"></span><span class="brand-mark__name">Northstar Metric</span></a>
-          <p style="margin-top: 1rem;">A marketing agency focused on paid acquisition, SEO, landing pages, CRO, tracking, and reporting for companies that need measurable performance.</p>
-        </div>
-        <div class="footer-col">
-          <h3>Navigation</h3>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Services</h3>
-          <ul class="footer-links">
-            <li><a href="service-detail.html">Paid Advertising</a></li>
-            <li><a href="services.html">SEO</a></li>
-            <li><a href="services.html">Web Design &amp; CRO</a></li>
-            <li><a href="services.html">Analytics &amp; Reporting</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Legal</h3>
-          <ul class="footer-links">
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-            <li><a href="cookie.html">Cookie Policy</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Contact</h3>
-          <ul class="footer-links">
-            <li><a href="mailto:hello@northstarmetric.com">hello@northstarmetric.com</a></li>
-            <li><a href="tel:+12125550148">+1 (212) 555-0148</a></li>
-            <li>North America &amp; remote-first delivery</li>
-            <li>Trusted by teams that need clarity before scale.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-base">
-        <p>&copy; <span data-year></span> Northstar Metric. All rights reserved.</p>
-        <p>Paid acquisition, SEO, CRO, and reporting with commercial focus.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-  <script src="js/main.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>

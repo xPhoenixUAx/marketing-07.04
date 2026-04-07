@@ -9,6 +9,7 @@ const yearTargets = document.querySelectorAll("[data-year]");
 const countUpItems = document.querySelectorAll("[data-count-up]");
 const serviceShowcase = document.querySelector("[data-service-showcase]");
 const whyUs = document.querySelector(".why-us");
+const brandTransform = document.querySelector("[data-brand-transform]");
 const hero = document.querySelector("[data-hero]");
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -584,6 +585,316 @@ if (whyUs && window.gsap) {
       { clearProps: "all" }
     );
   }
+}
+
+if (brandTransform) {
+  const viewport = brandTransform.querySelector("[data-brand-viewport]");
+  const track = brandTransform.querySelector("[data-brand-track]");
+  const dots = brandTransform.querySelectorAll("[data-brand-dot]");
+  const prevButton = brandTransform.querySelector("[data-brand-prev]");
+  const nextButton = brandTransform.querySelector("[data-brand-next]");
+  const reducedMotion = reduceMotionQuery.matches;
+  const loopBuffer = 2;
+  let activeBrandIndex = 0;
+  let currentRenderIndex = loopBuffer;
+  let currentTrackX = 0;
+  let isAnimating = false;
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragStartTranslate = 0;
+  let dragDelta = 0;
+
+  const brandSlides = [
+    {
+      tag: "Growth Systems",
+      title: "Lead flow architecture built around demand quality, not just volume.",
+      copy: "We connect Google Ads, Meta Ads, landing pages, and reporting into one system so budget decisions become clearer and conversion efficiency improves.",
+      link: "services.html",
+      mediaClass: "brand-transform__placeholder--stack",
+    },
+    {
+      tag: "Paid Media",
+      title: "Search rebuild for a regional service brand.",
+      copy: "Intent structure, landing-page alignment, and reporting cleanup that reduced wasted clicks and improved lead fit.",
+      link: "service-detail.html",
+      mediaClass: "brand-transform__placeholder--poster",
+    },
+    {
+      tag: "Analytics",
+      title: "Reporting system rebuilt for leadership visibility.",
+      copy: "GA4, GTM, attribution cleanup, and cleaner weekly decision signals for budget and pipeline reviews.",
+      link: "services.html",
+      mediaClass: "brand-transform__placeholder--lightbox",
+    },
+    {
+      tag: "Creative Testing",
+      title: "Offer-led creative system rolled out across paid social.",
+      copy: "Creative variations were structured around audience stage, offer clarity, and handoff into landing-page conversion paths.",
+      link: "services.html",
+      mediaClass: "brand-transform__placeholder--stack",
+    },
+  ];
+
+  const normalizeBrandIndex = (index) => {
+    const total = brandSlides.length;
+    return ((index % total) + total) % total;
+  };
+
+  const buildRenderSlides = () => [
+    ...brandSlides.slice(-loopBuffer),
+    ...brandSlides,
+    ...brandSlides.slice(0, loopBuffer),
+  ];
+
+  const renderSlides = buildRenderSlides();
+
+  const renderBrandTransform = () => {
+    if (!track) return;
+    track.innerHTML = renderSlides
+      .map(
+        (slide, index) => `
+          <article class="brand-transform__card" data-brand-slide="${index}">
+            <div class="brand-transform__media brand-transform__media--placeholder">
+              <div class="brand-transform__placeholder ${slide.mediaClass}"></div>
+            </div>
+            <div class="brand-transform__body">
+              <span class="brand-transform__tag">${slide.tag}</span>
+              <h3>${slide.title}</h3>
+              <p>${slide.copy}</p>
+              <a class="brand-transform__link" href="${slide.link}">View details</a>
+            </div>
+          </article>
+        `
+      )
+      .join("");
+  };
+
+  const updateBrandState = () => {
+    if (!track) return;
+    const slides = track.querySelectorAll("[data-brand-slide]");
+    slides.forEach((slide, index) => {
+      const isActive = index === currentRenderIndex;
+      const isPrev = index === currentRenderIndex - 1;
+      const isNext = index === currentRenderIndex + 1;
+      slide.classList.toggle("is-active", isActive);
+      slide.classList.toggle("is-prev", isPrev);
+      slide.classList.toggle("is-next", isNext);
+      slide.classList.toggle(
+        "is-far",
+        index < currentRenderIndex - 1 || index > currentRenderIndex + 1
+      );
+      slide.setAttribute("aria-hidden", String(!isActive && !isPrev && !isNext));
+      slide.style.pointerEvents = isActive || isPrev || isNext ? "auto" : "none";
+      slide.dataset.brandRole = isActive ? "active" : isPrev ? "prev" : isNext ? "next" : "far";
+    });
+
+    const actualIndex = normalizeBrandIndex(currentRenderIndex - loopBuffer);
+    activeBrandIndex = actualIndex;
+    dots.forEach((dot, dotIndex) => {
+      const isActive = dotIndex === actualIndex;
+      dot.classList.toggle("is-active", isActive);
+      dot.setAttribute("aria-pressed", String(isActive));
+    });
+  };
+
+  const getTrackTarget = (renderIndex) => {
+    if (!viewport || !track) return 0;
+    const slides = track.querySelectorAll("[data-brand-slide]");
+    const slide = slides[renderIndex];
+    if (!slide) return 0;
+    const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+    return viewport.clientWidth / 2 - slideCenter;
+  };
+
+  const applyTrackX = (value) => {
+    if (!track) return;
+    currentTrackX = value;
+    if (window.gsap) {
+      window.gsap.set(track, { x: value });
+    } else {
+      track.style.transform = `translate3d(${value}px, 0, 0)`;
+    }
+  };
+
+  const setTrackPosition = (renderIndex, animate = true) => {
+    if (!track) return;
+    const targetX = getTrackTarget(renderIndex);
+
+    if (window.gsap && !reducedMotion && animate) {
+      isAnimating = true;
+      window.gsap.to(track, {
+        x: targetX,
+        duration: 0.62,
+        ease: "power3.out",
+        onComplete: () => {
+          isAnimating = false;
+        },
+      });
+    } else {
+      isAnimating = false;
+      applyTrackX(targetX);
+    }
+  };
+
+  const snapIfClone = () => {
+    if (!track) return;
+    let didSnap = false;
+    if (currentRenderIndex < loopBuffer) {
+      currentRenderIndex += brandSlides.length;
+      didSnap = true;
+    } else if (currentRenderIndex >= brandSlides.length + loopBuffer) {
+      currentRenderIndex -= brandSlides.length;
+      didSnap = true;
+    }
+
+    if (didSnap) {
+      brandTransform.classList.add("is-snapping");
+      applyTrackX(getTrackTarget(currentRenderIndex));
+      updateBrandState();
+
+      window.requestAnimationFrame(() => {
+        brandTransform.classList.remove("is-snapping");
+      });
+    }
+  };
+
+  const goToRenderIndex = (nextRenderIndex, animate = true) => {
+    if (!track || isAnimating) return;
+    currentRenderIndex = nextRenderIndex;
+    updateBrandState();
+    if (window.gsap && !reducedMotion && animate) {
+      isAnimating = true;
+      window.gsap.to(track, {
+        x: getTrackTarget(currentRenderIndex),
+        duration: 0.62,
+        ease: "power3.out",
+        onUpdate: () => {
+          currentTrackX = window.gsap.getProperty(track, "x");
+        },
+        onComplete: () => {
+          isAnimating = false;
+          snapIfClone();
+        },
+      });
+    } else {
+      setTrackPosition(currentRenderIndex, false);
+      snapIfClone();
+    }
+  };
+
+  const goToBrandSlide = (nextIndex, animate = true) => {
+    const normalized = normalizeBrandIndex(nextIndex);
+    goToRenderIndex(normalized + loopBuffer, animate);
+  };
+
+  const moveByStep = (direction) => {
+    goToRenderIndex(currentRenderIndex + direction);
+  };
+
+  const stopTrackTween = () => {
+    if (!window.gsap || !track) return;
+    window.gsap.killTweensOf(track);
+  };
+
+  const onPointerDown = (event) => {
+    if (!viewport || !track) return;
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    if (isAnimating) return;
+
+    isDragging = true;
+    dragStartX = event.clientX;
+    dragStartTranslate = currentTrackX;
+    dragDelta = 0;
+    viewport.classList.add("is-dragging");
+    stopTrackTween();
+    viewport.setPointerCapture(event.pointerId);
+  };
+
+  const onPointerMove = (event) => {
+    if (!isDragging || !track) return;
+    dragDelta = event.clientX - dragStartX;
+    applyTrackX(dragStartTranslate + dragDelta);
+  };
+
+  const onPointerUp = (event) => {
+    if (!isDragging || !viewport) return;
+    isDragging = false;
+    viewport.classList.remove("is-dragging");
+
+    const threshold = Math.max(40, viewport.clientWidth * 0.08);
+    if (dragDelta <= -threshold) {
+      moveByStep(1);
+    } else if (dragDelta >= threshold) {
+      moveByStep(-1);
+    } else {
+      setTrackPosition(currentRenderIndex);
+    }
+
+    dragDelta = 0;
+
+    if (viewport.hasPointerCapture(event.pointerId)) {
+      viewport.releasePointerCapture(event.pointerId);
+    }
+  };
+
+  renderBrandTransform();
+  updateBrandState();
+  setTrackPosition(currentRenderIndex, false);
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const nextIndex = Number.parseInt(dot.dataset.brandDot || "0", 10);
+      if (!Number.isFinite(nextIndex)) return;
+      goToBrandSlide(nextIndex);
+    });
+  });
+
+  if (viewport) {
+    viewport.addEventListener("pointerdown", onPointerDown);
+    viewport.addEventListener("pointermove", onPointerMove);
+    viewport.addEventListener("pointerup", onPointerUp);
+    viewport.addEventListener("pointercancel", onPointerUp);
+    viewport.addEventListener("pointerleave", (event) => {
+      if (isDragging) onPointerUp(event);
+    });
+
+    viewport.setAttribute("tabindex", "0");
+    viewport.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        moveByStep(-1);
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        moveByStep(1);
+      }
+    });
+  }
+
+  if (track) {
+    track.addEventListener("click", (event) => {
+      const card = event.target.closest("[data-brand-slide]");
+      if (!card) return;
+      const slideIndex = Number.parseInt(card.dataset.brandSlide || "", 10);
+      if (!Number.isFinite(slideIndex)) return;
+
+      if (slideIndex === currentRenderIndex - 1) {
+        event.preventDefault();
+        moveByStep(-1);
+      } else if (slideIndex === currentRenderIndex + 1) {
+        event.preventDefault();
+        moveByStep(1);
+      }
+    });
+  }
+
+  prevButton?.addEventListener("click", () => moveByStep(-1));
+  nextButton?.addEventListener("click", () => moveByStep(1));
+
+  window.addEventListener("resize", () => {
+    stopTrackTween();
+    isAnimating = false;
+    setTrackPosition(currentRenderIndex, false);
+  });
 }
 
 if (hero && window.gsap) {
