@@ -8,6 +8,7 @@ const faqItems = document.querySelectorAll("[data-faq-item]");
 const yearTargets = document.querySelectorAll("[data-year]");
 const countUpItems = document.querySelectorAll("[data-count-up]");
 const serviceShowcase = document.querySelector("[data-service-showcase]");
+const whyUs = document.querySelector(".why-us");
 const hero = document.querySelector("[data-hero]");
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -409,6 +410,179 @@ if (serviceShowcase) {
         });
       }
     }
+  }
+}
+
+if (whyUs && window.gsap) {
+  const gsap = window.gsap;
+  const ScrollTrigger = window.ScrollTrigger;
+  const reducedMotion = reduceMotionQuery.matches;
+  const visual = whyUs.querySelector(".why-us__visual");
+  const backdrop = whyUs.querySelector(".why-us__backdrop");
+  const image = whyUs.querySelector(".why-us__image");
+  const statCard = whyUs.querySelector(".why-us__stat-card");
+  const statLabel = whyUs.querySelector(".why-us__stat-label");
+  const statRing = whyUs.querySelector(".why-us__stat-ring");
+  const statLines = whyUs.querySelectorAll(".why-us__stat-lines span");
+  const content = whyUs.querySelector(".why-us__content");
+  const heading = whyUs.querySelector(".why-us__content h2");
+  const lead = whyUs.querySelector(".why-us__lead");
+  const listItems = whyUs.querySelectorAll(".why-us__list li");
+  const cta = whyUs.querySelector(".why-us__cta");
+
+  if (ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+
+  if (!reducedMotion) {
+    const introTargets = [visual, heading, lead, ...listItems, cta].filter(Boolean);
+    gsap.set(introTargets, { willChange: "transform, opacity" });
+
+    gsap
+      .timeline({
+        defaults: { ease: "power3.out" },
+        scrollTrigger: {
+          trigger: whyUs,
+          start: "top 72%",
+          once: true,
+        },
+      })
+      .from(
+        visual,
+        {
+          opacity: 0,
+          x: -26,
+          duration: 0.7,
+        },
+        0
+      )
+      .from(
+        [heading, lead],
+        {
+          opacity: 0,
+          y: 28,
+          duration: 0.62,
+          stagger: 0.08,
+        },
+        0.08
+      )
+      .from(
+        listItems,
+        {
+          opacity: 0,
+          y: 18,
+          duration: 0.44,
+          stagger: 0.07,
+        },
+        0.24
+      )
+      .from(
+        cta,
+        {
+          opacity: 0,
+          y: 16,
+          duration: 0.4,
+        },
+        0.42
+      )
+      .from(
+        statCard,
+        {
+          opacity: 0,
+          y: 18,
+          scale: 0.94,
+          duration: 0.48,
+        },
+        0.28
+      );
+
+    if (image) {
+      gsap.to(image, {
+        y: 12,
+        rotation: -0.8,
+        duration: 7.4,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        transformOrigin: "50% 60%",
+      });
+    }
+
+    if (statCard) {
+      gsap.to(statCard, {
+        y: -10,
+        rotation: 1.2,
+        duration: 5.8,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        transformOrigin: "50% 50%",
+      });
+    }
+
+    if (backdrop) {
+      gsap.to(backdrop, {
+        yPercent: -2,
+        xPercent: 1.2,
+        scale: 1.018,
+        duration: 10.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        transformOrigin: "50% 50%",
+      });
+
+      if (ScrollTrigger) {
+        gsap.to(backdrop, {
+          y: 34,
+          ease: "none",
+          scrollTrigger: {
+            trigger: whyUs,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.9,
+          },
+        });
+      }
+    }
+
+    if (statRing) {
+      gsap.to(statRing, {
+        rotation: 18,
+        duration: 6.8,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        transformOrigin: "50% 50%",
+      });
+    }
+
+    if (statLines.length) {
+      gsap.to(statLines, {
+        scaleX: (index) => (index === 0 ? 1.08 : 1.14),
+        duration: 2.8,
+        repeat: -1,
+        yoyo: true,
+        stagger: 0.18,
+        ease: "sine.inOut",
+        transformOrigin: "0% 50%",
+      });
+    }
+
+    if (statLabel) {
+      gsap.to(statLabel, {
+        opacity: 0.76,
+        duration: 2.4,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+    }
+  } else {
+    gsap.set(
+      [visual, backdrop, image, statCard, statLabel, statRing, ...statLines, heading, lead, ...listItems, cta].filter(Boolean),
+      { clearProps: "all" }
+    );
   }
 }
 
