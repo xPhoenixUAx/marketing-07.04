@@ -3,6 +3,7 @@ const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const mobileMenu = document.querySelector("[data-mobile-menu]");
 const mobileLinks = document.querySelectorAll("[data-mobile-link]");
+const siteNav = document.querySelector(".site-nav");
 const revealItems = document.querySelectorAll(".reveal");
 const faqItems = document.querySelectorAll("[data-faq-item]");
 const yearTargets = document.querySelectorAll("[data-year]");
@@ -15,6 +16,112 @@ const ctaBanners = document.querySelectorAll("[data-cta-banner]");
 const hero = document.querySelector("[data-hero]");
 const formStatus = document.querySelector("[data-form-status]");
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+if (siteNav) {
+  const servicesLink = siteNav.querySelector('a[href="services.html"]');
+  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+  const servicePages = [
+    { href: "brand-strategy.html", label: "Brand Strategy" },
+    { href: "paid-advertising.html", label: "Paid Advertising" },
+    { href: "seo.html", label: "SEO" },
+    { href: "content-marketing.html", label: "Content Marketing" },
+    { href: "social-media-campaigns.html", label: "Social Media Campaigns" },
+    { href: "web-design-cro.html", label: "Web Design & CRO" },
+    { href: "email-automation.html", label: "Email Automation" },
+    { href: "analytics-reporting.html", label: "Analytics & Reporting" },
+  ];
+
+  if (servicesLink && !siteNav.querySelector(".site-nav__dropdown")) {
+    const isServicesOverview = currentPath === "services.html";
+    const activeService = servicePages.find((item) => item.href === currentPath);
+    const dropdown = document.createElement("div");
+    dropdown.className = "site-nav__dropdown";
+
+    if (isServicesOverview || activeService) {
+      dropdown.classList.add("is-current");
+    }
+
+    const toggle = document.createElement("a");
+    toggle.className = "site-nav__dropdown-toggle";
+    toggle.href = "services.html";
+    toggle.innerHTML =
+      'Services <span class="site-nav__dropdown-icon" aria-hidden="true">▾</span>';
+
+    if (isServicesOverview) {
+      toggle.setAttribute("aria-current", "page");
+    }
+
+    const menu = document.createElement("div");
+    menu.className = "site-nav__dropdown-menu";
+
+    servicePages.forEach((item) => {
+      const link = document.createElement("a");
+      link.href = item.href;
+      link.textContent = item.label;
+
+      if (item.href === currentPath) {
+        link.setAttribute("aria-current", "page");
+      }
+
+      menu.appendChild(link);
+    });
+
+    dropdown.append(toggle, menu);
+    servicesLink.replaceWith(dropdown);
+  }
+}
+
+if (body.classList.contains("page-service")) {
+  const pageMain = document.querySelector(".page-main");
+
+  if (pageMain && !pageMain.querySelector("[data-service-prints]")) {
+    const printLayer = document.createElement("div");
+    printLayer.className = "service-print-layer";
+    printLayer.setAttribute("aria-hidden", "true");
+    printLayer.dataset.servicePrints = "true";
+
+    const prints = [
+      { icon: "fa-google", theme: "google", top: "8%", left: "4%", size: "2.8rem", rotate: "-16deg" },
+      { icon: "fa-meta", theme: "meta", top: "12%", right: "6%", size: "3.4rem", rotate: "14deg" },
+      { icon: "fa-youtube", theme: "youtube", top: "24%", left: "9%", size: "2.5rem", rotate: "-12deg" },
+      { icon: "fa-linkedin-in", theme: "linkedin", top: "18%", left: "26%", size: "2rem", rotate: "8deg" },
+      { icon: "fa-instagram", theme: "instagram", top: "20%", right: "24%", size: "2.4rem", rotate: "-14deg" },
+      { icon: "fa-linkedin-in", theme: "linkedin", top: "31%", right: "10%", size: "2.3rem", rotate: "11deg" },
+      { icon: "fa-instagram", theme: "instagram", top: "43%", left: "5%", size: "3rem", rotate: "-10deg" },
+      { icon: "fa-google", theme: "google", top: "36%", left: "22%", size: "2.1rem", rotate: "13deg" },
+      { icon: "fa-youtube", theme: "youtube", top: "39%", right: "22%", size: "2.2rem", rotate: "-18deg" },
+      { icon: "fa-google", theme: "google", top: "49%", right: "7%", size: "2.6rem", rotate: "10deg" },
+      { icon: "fa-meta", theme: "meta", top: "61%", left: "8%", size: "2.9rem", rotate: "-18deg" },
+      { icon: "fa-linkedin-in", theme: "linkedin", top: "55%", left: "28%", size: "2.1rem", rotate: "12deg" },
+      { icon: "fa-instagram", theme: "instagram", top: "58%", right: "28%", size: "2.4rem", rotate: "-9deg" },
+      { icon: "fa-youtube", theme: "youtube", top: "69%", right: "12%", size: "2.4rem", rotate: "16deg" },
+      { icon: "fa-linkedin-in", theme: "linkedin", top: "78%", left: "3%", size: "3.2rem", rotate: "-8deg" },
+      { icon: "fa-google", theme: "google", top: "74%", left: "24%", size: "2rem", rotate: "15deg" },
+      { icon: "fa-meta", theme: "meta", top: "72%", right: "25%", size: "2.7rem", rotate: "-16deg" },
+      { icon: "fa-instagram", theme: "instagram", top: "85%", right: "6%", size: "2.8rem", rotate: "12deg" },
+      { icon: "fa-google", theme: "google", top: "90%", left: "18%", size: "2.2rem", rotate: "-14deg" },
+      { icon: "fa-meta", theme: "meta", top: "94%", right: "20%", size: "2.5rem", rotate: "9deg" },
+      { icon: "fa-youtube", theme: "youtube", top: "88%", left: "36%", size: "2rem", rotate: "-11deg" },
+      { icon: "fa-linkedin-in", theme: "linkedin", top: "92%", right: "34%", size: "2.1rem", rotate: "14deg" },
+    ];
+
+    prints.forEach((item) => {
+      const mark = document.createElement("span");
+      mark.className = `service-print service-print--${item.theme}`;
+      mark.style.top = item.top;
+      mark.style.fontSize = item.size;
+      mark.style.transform = `rotate(${item.rotate})`;
+
+      if (item.left) mark.style.left = item.left;
+      if (item.right) mark.style.right = item.right;
+
+      mark.innerHTML = `<i class="fa-brands ${item.icon}"></i>`;
+      printLayer.appendChild(mark);
+    });
+
+    pageMain.prepend(printLayer);
+  }
+}
 
 const setHeaderState = () => {
   if (!header) return;

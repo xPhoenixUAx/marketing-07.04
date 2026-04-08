@@ -30,27 +30,34 @@ body.page-services .hero-panel {
   z-index: 1;
   min-height: clamp(25rem, 56vh, 33rem);
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   place-items: center;
   text-align: center;
   padding: clamp(7.25rem, 10vw, 8.5rem) 0 clamp(4.2rem, 6vw, 5.5rem);
 }
 
 body.page-services .hero-copy {
+  width: 100%;
+  margin-inline: auto;
   justify-items: center;
-  max-width: min(52rem, 100%);
+  max-width: min(72rem, 100%);
   gap: 1rem;
 }
 
 body.page-services .hero-copy h1 {
   color: #fff;
-  font-size: clamp(2.8rem, 5.5vw, 4.75rem);
+  font-size: clamp(1.95rem, 3.85vw, 3.325rem);
   line-height: 1.02;
   letter-spacing: -0.055em;
+  margin-inline: auto;
+  text-align: center;
 }
 
 body.page-services .hero-copy .lead {
-  max-width: 47rem;
+  max-width: 52rem;
   color: rgba(255, 255, 255, 0.8);
+  margin-inline: auto;
+  text-align: center;
 }
 
 body.page-services .hero-actions {
@@ -145,6 +152,42 @@ body.page-services .services-intro__badge span {
 body.page-services .service-catalog {
   display: grid;
   gap: 1rem;
+}
+
+body.page-services .service-groups {
+  display: grid;
+  gap: 2rem;
+}
+
+body.page-services .service-group {
+  display: grid;
+  gap: 1.15rem;
+}
+
+body.page-services .service-group__head {
+  display: grid;
+  gap: 0.45rem;
+  max-width: 44rem;
+}
+
+body.page-services .service-group__eyebrow {
+  display: inline-flex;
+  justify-self: start;
+  align-items: center;
+  padding: 0.44rem 0.78rem;
+  border-radius: 999px;
+  background: rgba(46, 107, 255, 0.08);
+  color: var(--accent-strong);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+body.page-services .service-group__head h2 {
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
 }
 
 body.page-services .service-index-card {
@@ -278,14 +321,23 @@ body.page-services .services-cta .button-ghost {
 @media (min-width: 768px) {
   body.page-services .hero-panel {
     min-height: clamp(27rem, 58vh, 35rem);
+    grid-template-columns: minmax(0, 1fr);
   }
 
   body.page-services .service-catalog {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  body.page-services .service-catalog--wide {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 1024px) {
+  body.page-services .hero-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   body.page-services .services-intro {
     grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 23rem);
     gap: 2rem;
@@ -294,6 +346,14 @@ body.page-services .services-cta .button-ghost {
 
   body.page-services .service-catalog {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  body.page-services .service-catalog--wide {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body.page-services .service-group--wide .service-index-card {
+    min-height: 100%;
   }
 
   body.page-services .service-index-card {
