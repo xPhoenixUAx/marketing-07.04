@@ -2,7 +2,6 @@ const body = document.body;
 const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const mobileMenu = document.querySelector("[data-mobile-menu]");
-const mobileLinks = document.querySelectorAll("[data-mobile-link]");
 const siteNav = document.querySelector(".site-nav");
 const revealItems = document.querySelectorAll(".reveal");
 const faqItems = document.querySelectorAll("[data-faq-item]");
@@ -16,20 +15,55 @@ const ctaBanners = document.querySelectorAll("[data-cta-banner]");
 const hero = document.querySelector("[data-hero]");
 const formStatus = document.querySelector("[data-form-status]");
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const currentPath = window.location.pathname.split("/").pop() || "index.html";
+const servicePages = [
+  { href: "brand-strategy.html", label: "Brand Strategy" },
+  { href: "paid-advertising.html", label: "Paid Advertising" },
+  { href: "seo.html", label: "SEO" },
+  { href: "content-marketing.html", label: "Content Marketing" },
+  { href: "social-media-campaigns.html", label: "Social Media Campaigns" },
+  { href: "web-design-cro.html", label: "Web Design & CRO" },
+  { href: "email-automation.html", label: "Email Automation" },
+  { href: "analytics-reporting.html", label: "Analytics & Reporting" },
+];
+const COOKIE_PREFS_KEY = "primeset_cookie_preferences_v1";
+const COOKIE_PREFS_MAX_AGE = 60 * 60 * 24 * 365;
+
+const readCookiePreferences = () => {
+  try {
+    const raw = window.localStorage.getItem(COOKIE_PREFS_KEY);
+    if (!raw) return null;
+
+    const parsed = JSON.parse(raw);
+    return {
+      essential: true,
+      analytics: Boolean(parsed.analytics),
+      marketing: Boolean(parsed.marketing),
+      consentedAt: parsed.consentedAt || null,
+    };
+  } catch (error) {
+    return null;
+  }
+};
+
+const writeCookiePreferences = (preferences) => {
+  const payload = {
+    essential: true,
+    analytics: Boolean(preferences.analytics),
+    marketing: Boolean(preferences.marketing),
+    consentedAt: new Date().toISOString(),
+  };
+
+  window.localStorage.setItem(COOKIE_PREFS_KEY, JSON.stringify(payload));
+
+  const cookieValue = `essential:1|analytics:${payload.analytics ? 1 : 0}|marketing:${payload.marketing ? 1 : 0}`;
+  document.cookie = `cookie_consent=${encodeURIComponent(cookieValue)}; max-age=${COOKIE_PREFS_MAX_AGE}; path=/; SameSite=Lax`;
+
+  return payload;
+};
 
 if (siteNav) {
   const servicesLink = siteNav.querySelector('a[href="services.html"]');
-  const currentPath = window.location.pathname.split("/").pop() || "index.html";
-  const servicePages = [
-    { href: "brand-strategy.html", label: "Brand Strategy" },
-    { href: "paid-advertising.html", label: "Paid Advertising" },
-    { href: "seo.html", label: "SEO" },
-    { href: "content-marketing.html", label: "Content Marketing" },
-    { href: "social-media-campaigns.html", label: "Social Media Campaigns" },
-    { href: "web-design-cro.html", label: "Web Design & CRO" },
-    { href: "email-automation.html", label: "Email Automation" },
-    { href: "analytics-reporting.html", label: "Analytics & Reporting" },
-  ];
 
   if (servicesLink && !siteNav.querySelector(".site-nav__dropdown")) {
     const isServicesOverview = currentPath === "services.html";
@@ -69,6 +103,200 @@ if (siteNav) {
     dropdown.append(toggle, menu);
     servicesLink.replaceWith(dropdown);
   }
+}
+
+if (mobileMenu) {
+  const mobileServicesLink = mobileMenu.querySelector('.mobile-menu__link[href="services.html"]');
+
+  if (mobileServicesLink && !mobileMenu.querySelector(".mobile-menu__item--dropdown")) {
+    const parentItem = mobileServicesLink.closest(".mobile-menu__item");
+    const isServicesOverview = currentPath === "services.html";
+    const activeService = servicePages.find((item) => item.href === currentPath);
+    const dropdownItem = document.createElement("div");
+    dropdownItem.className = "mobile-menu__item mobile-menu__item--dropdown";
+
+    if (parentItem?.getAttribute("style")) {
+      dropdownItem.setAttribute("style", parentItem.getAttribute("style"));
+    }
+
+    if (isServicesOverview || activeService) {
+      dropdownItem.classList.add("is-current", "is-open");
+    }
+
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "mobile-menu__link mobile-menu__dropdown-toggle";
+    toggle.setAttribute("data-mobile-dropdown-toggle", "");
+    toggle.setAttribute("aria-expanded", isServicesOverview || activeService ? "true" : "false");
+    toggle.innerHTML =
+      'Services <span class="mobile-menu__dropdown-icon" aria-hidden="true">▾</span>';
+
+    const menu = document.createElement("div");
+    menu.className = "mobile-menu__submenu";
+
+    servicePages.forEach((item) => {
+      const link = document.createElement("a");
+      link.href = item.href;
+      link.className = "mobile-menu__submenu-link";
+      link.dataset.mobileLink = "";
+      link.innerHTML = `${item.label}<span aria-hidden="true">↗</span>`;
+
+      if (item.href === currentPath) {
+        link.setAttribute("aria-current", "page");
+      }
+
+      menu.appendChild(link);
+    });
+
+    dropdownItem.append(toggle, menu);
+    parentItem?.replaceWith(dropdownItem);
+  }
+}
+
+if (body && !body.querySelector("[data-cookie-console]")) {
+  const existingPreferences = readCookiePreferences();
+  let draftPreferences = existingPreferences
+    ? { ...existingPreferences }
+    : { essential: true, analytics: false, marketing: false };
+
+  const cookieConsole = document.createElement("aside");
+  cookieConsole.className = "cookie-console";
+  cookieConsole.dataset.cookieConsole = "true";
+  cookieConsole.setAttribute("aria-live", "polite");
+
+  cookieConsole.innerHTML = `
+    <div class="cookie-console__panel" role="dialog" aria-modal="false" aria-labelledby="cookie-console-title">
+      <div class="cookie-console__top">
+        <div>
+          <span class="cookie-console__eyebrow">Privacy controls</span>
+          <h2 class="cookie-console__title" id="cookie-console-title">Shape the <span>data trail</span> you allow.</h2>
+        </div>
+        <button class="cookie-console__close" type="button" aria-label="Close cookie settings" data-cookie-close>×</button>
+      </div>
+      <p class="cookie-console__copy">
+        We use essential cookies to keep the site working, and optional analytics or marketing cookies only if you allow them.
+        <a href="cookie.html">Read the policy</a>
+      </p>
+      <div class="cookie-console__chips" aria-hidden="true">
+        <span class="cookie-console__chip cookie-console__chip--essential">Essential</span>
+        <span class="cookie-console__chip cookie-console__chip--analytics">Analytics</span>
+        <span class="cookie-console__chip cookie-console__chip--marketing">Marketing</span>
+      </div>
+      <div class="cookie-console__actions">
+        <button class="cookie-console__button cookie-console__button--primary" type="button" data-cookie-accept-all>Accept all</button>
+        <button class="cookie-console__button cookie-console__button--ghost" type="button" data-cookie-essential>Essential only</button>
+        <button class="cookie-console__button cookie-console__button--link" type="button" data-cookie-customize>Customize</button>
+      </div>
+      <div class="cookie-console__prefs" data-cookie-prefs>
+        <div class="cookie-console__pref">
+          <div>
+            <strong>Strictly necessary</strong>
+            <p>Required for navigation, security, and form delivery.</p>
+          </div>
+          <button class="cookie-console__switch" type="button" aria-pressed="true" disabled aria-label="Strictly necessary cookies are always enabled"></button>
+        </div>
+        <div class="cookie-console__pref">
+          <div>
+            <strong>Analytics</strong>
+            <p>Helps us understand page visits, scroll depth, and site performance.</p>
+          </div>
+          <button class="cookie-console__switch" type="button" aria-pressed="false" data-cookie-toggle="analytics" aria-label="Toggle analytics cookies"></button>
+        </div>
+        <div class="cookie-console__pref">
+          <div>
+            <strong>Marketing</strong>
+            <p>Supports remarketing, campaign attribution, and ad platform signals.</p>
+          </div>
+          <button class="cookie-console__switch" type="button" aria-pressed="false" data-cookie-toggle="marketing" aria-label="Toggle marketing cookies"></button>
+        </div>
+      </div>
+      <div class="cookie-console__footer">
+        <span class="cookie-console__note">You can reopen this panel any time.</span>
+        <button class="cookie-console__button cookie-console__button--ghost" type="button" data-cookie-save>Save preferences</button>
+      </div>
+    </div>
+    <button class="cookie-console__launcher" type="button" data-cookie-launcher>Cookie settings</button>
+  `;
+
+  body.appendChild(cookieConsole);
+
+  const analyticsToggle = cookieConsole.querySelector('[data-cookie-toggle="analytics"]');
+  const marketingToggle = cookieConsole.querySelector('[data-cookie-toggle="marketing"]');
+  const launcher = cookieConsole.querySelector("[data-cookie-launcher]");
+  const closeButton = cookieConsole.querySelector("[data-cookie-close]");
+  const customizeButton = cookieConsole.querySelector("[data-cookie-customize]");
+  const saveButton = cookieConsole.querySelector("[data-cookie-save]");
+  const acceptAllButton = cookieConsole.querySelector("[data-cookie-accept-all]");
+  const essentialOnlyButton = cookieConsole.querySelector("[data-cookie-essential]");
+
+  const syncCookieConsole = () => {
+    if (analyticsToggle) {
+      analyticsToggle.setAttribute("aria-pressed", String(Boolean(draftPreferences.analytics)));
+    }
+
+    if (marketingToggle) {
+      marketingToggle.setAttribute("aria-pressed", String(Boolean(draftPreferences.marketing)));
+    }
+  };
+
+  const openCookieConsole = (configure = false) => {
+    cookieConsole.classList.add("is-open");
+    cookieConsole.classList.toggle("is-configuring", configure);
+  };
+
+  const closeCookieConsole = () => {
+    cookieConsole.classList.remove("is-open");
+    cookieConsole.classList.remove("is-configuring");
+  };
+
+  const saveCookiePreferences = (preferences) => {
+    draftPreferences = writeCookiePreferences(preferences);
+    syncCookieConsole();
+    closeCookieConsole();
+  };
+
+  syncCookieConsole();
+
+  if (!existingPreferences) {
+    openCookieConsole(false);
+  }
+
+  launcher?.addEventListener("click", () => {
+    openCookieConsole(true);
+  });
+
+  closeButton?.addEventListener("click", () => {
+    closeCookieConsole();
+  });
+
+  customizeButton?.addEventListener("click", () => {
+    const nextState = !cookieConsole.classList.contains("is-configuring");
+    cookieConsole.classList.toggle("is-configuring", nextState);
+    cookieConsole.classList.add("is-open");
+  });
+
+  acceptAllButton?.addEventListener("click", () => {
+    saveCookiePreferences({ essential: true, analytics: true, marketing: true });
+  });
+
+  essentialOnlyButton?.addEventListener("click", () => {
+    saveCookiePreferences({ essential: true, analytics: false, marketing: false });
+  });
+
+  saveButton?.addEventListener("click", () => {
+    saveCookiePreferences(draftPreferences);
+  });
+
+  [analyticsToggle, marketingToggle].forEach((toggle) => {
+    toggle?.addEventListener("click", () => {
+      const key = toggle.dataset.cookieToggle;
+      draftPreferences = {
+        ...draftPreferences,
+        [key]: !draftPreferences[key],
+      };
+      syncCookieConsole();
+    });
+  });
 }
 
 if (body.classList.contains("page-service")) {
@@ -148,16 +376,38 @@ if (menuToggle && mobileMenu) {
 
   mobileMenu.addEventListener("click", (event) => {
     if (event.target === mobileMenu) closeMenu();
+
+    const dropdownToggle = event.target.closest("[data-mobile-dropdown-toggle]");
+    if (dropdownToggle) {
+      const dropdownItem = dropdownToggle.closest(".mobile-menu__item--dropdown");
+      const isOpen = dropdownItem?.classList.contains("is-open");
+
+      mobileMenu
+        .querySelectorAll(".mobile-menu__item--dropdown")
+        .forEach((item) => {
+          item.classList.remove("is-open");
+          const toggle = item.querySelector("[data-mobile-dropdown-toggle]");
+          if (toggle) toggle.setAttribute("aria-expanded", "false");
+        });
+
+      if (dropdownItem && !isOpen) {
+        dropdownItem.classList.add("is-open");
+        dropdownToggle.setAttribute("aria-expanded", "true");
+      }
+
+      return;
+    }
+
+    const link = event.target.closest("[data-mobile-link]");
+    if (link) {
+      closeMenu();
+    }
   });
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closeMenu();
   });
 }
-
-mobileLinks.forEach((link) => {
-  link.addEventListener("click", closeMenu);
-});
 
 faqItems.forEach((item) => {
   const button = item.querySelector("[data-faq-question]");
