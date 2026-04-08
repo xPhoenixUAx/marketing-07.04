@@ -398,9 +398,9 @@ body.page-about .section--about-signal-marquee {
 }
 
 body.page-about .about-signal-marquee {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100dvw;
+  margin-left: calc(50% - 50dvw);
+  margin-right: calc(50% - 50dvw);
   display: grid;
   gap: 0.9rem;
   overflow: hidden;
