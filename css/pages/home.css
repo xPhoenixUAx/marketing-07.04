@@ -1396,18 +1396,6 @@ body.page-home .service-showcase__link::after {
   margin-left: 0.55rem;
 }
 
-body.page-home .section--legacy-choice {
-  display: none;
-}
-
-body.page-home .section--legacy-process {
-  display: none;
-}
-
-body.page-home .section--legacy-cases {
-  display: none;
-}
-
 body.page-home .section--why-us {
   padding: 1.1rem 0 0.95rem;
   background: linear-gradient(180deg, #f9f8f5 0%, #f4f3ef 100%);

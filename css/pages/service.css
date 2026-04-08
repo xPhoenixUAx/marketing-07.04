@@ -392,8 +392,7 @@ body.page-service .hero-actions {
 }
 
 body.page-service .tag,
-body.page-service .pill-list,
-body.page-service .placeholder-media {
+body.page-service .pill-list {
   display: none;
 }
 

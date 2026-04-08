@@ -1,4 +1,4 @@
-const body = document.body;
+﻿const body = document.body;
 const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const mobileMenu = document.querySelector("[data-mobile-menu]");
@@ -172,7 +172,7 @@ if (body && !body.querySelector("[data-cookie-console]")) {
           <span class="cookie-console__eyebrow">Privacy controls</span>
           <h2 class="cookie-console__title" id="cookie-console-title">Shape the <span>data trail</span> you allow.</h2>
         </div>
-        <button class="cookie-console__close" type="button" aria-label="Close cookie settings" data-cookie-close>×</button>
+        <button class="cookie-console__close" type="button" aria-label="Close cookie settings" data-cookie-close>&times;</button>
       </div>
       <p class="cookie-console__copy">
         We use essential cookies to keep the site working, and optional analytics or marketing cookies only if you allow them.
@@ -1055,7 +1055,7 @@ if (brandTransform) {
       image: "img/home/gallery/paid.jpg",
       imageAlt: "Paid media showcase",
       overview:
-        "The account had spend, but not enough control. High-intent and low-intent traffic were blended together, landing pages were too generic, and reporting didn’t explain which ad groups were producing useful sales conversations.",
+        "The account had spend, but not enough control. High-intent and low-intent traffic were blended together, landing pages were too generic, and reporting didnвЂ™t explain which ad groups were producing useful sales conversations.",
       details: [
         "Separated campaigns by intent depth, service category, and location economics.",
         "Reworked ad copy and extensions to pre-qualify before the click.",
@@ -1888,3 +1888,4 @@ if (hero && window.gsap) {
     });
   }
 }
+
