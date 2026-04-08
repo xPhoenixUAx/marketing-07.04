@@ -131,6 +131,25 @@
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </section>
+
+    <div class="contact-success-modal" data-contact-success-modal hidden>
+      <div class="contact-success-modal__backdrop" data-contact-success-close></div>
+      <div class="contact-success-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="contact-success-title">
+        <button class="contact-success-modal__close" type="button" aria-label="Close confirmation" data-contact-success-close>
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+        <div class="contact-success-modal__icon" aria-hidden="true">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <span class="contact-success-modal__eyebrow">Message sent</span>
+        <h2 id="contact-success-title">Your inquiry is on its way.</h2>
+        <p>Thank you. We received your message successfully and will reply by email with the most useful next step.</p>
+        <div class="contact-success-modal__actions">
+          <button class="button button--accent" type="button" data-contact-success-close>Continue</button>
+          <a class="button-ghost" href="services.html">Explore Services</a>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer class="site-footer">

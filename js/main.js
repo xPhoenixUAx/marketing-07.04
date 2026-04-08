@@ -14,6 +14,7 @@ const testimonialSection = document.querySelector("[data-testimonials]");
 const ctaBanners = document.querySelectorAll("[data-cta-banner]");
 const hero = document.querySelector("[data-hero]");
 const formStatus = document.querySelector("[data-form-status]");
+const contactSuccessModal = document.querySelector("[data-contact-success-modal]");
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const currentPath = window.location.pathname.split("/").pop() || "index.html";
 const servicePages = [
@@ -453,18 +454,51 @@ yearTargets.forEach((target) => {
 if (formStatus) {
   const params = new URLSearchParams(window.location.search);
   const formState = params.get("form");
+  const successCloseControls = contactSuccessModal?.querySelectorAll("[data-contact-success-close]");
+  const successDialog = contactSuccessModal?.querySelector(".contact-success-modal__dialog");
+
+  const closeContactSuccessModal = () => {
+    if (!contactSuccessModal) return;
+    contactSuccessModal.hidden = true;
+    body?.classList.remove("contact-modal-open");
+  };
 
   if (formState === "success") {
-    formStatus.hidden = false;
-    formStatus.classList.add("form-status--success");
-    formStatus.textContent =
-      "Thanks. Your inquiry was sent successfully. We will continue the conversation by email.";
+    if (contactSuccessModal) {
+      contactSuccessModal.hidden = false;
+      body?.classList.add("contact-modal-open");
+      window.setTimeout(() => {
+        successCloseControls?.[0]?.focus();
+      }, 40);
+    } else {
+      formStatus.hidden = false;
+      formStatus.classList.add("form-status--success");
+      formStatus.textContent =
+        "Thanks. Your inquiry was sent successfully. We will continue the conversation by email.";
+    }
   } else if (formState === "invalid" || formState === "error") {
     formStatus.hidden = false;
     formStatus.classList.add("form-status--error");
     formStatus.textContent =
       "We could not send your inquiry. Please check the required fields and try again, or email support@primesetltd.com.";
   }
+
+  successCloseControls?.forEach((control) => {
+    control.addEventListener("click", closeContactSuccessModal);
+  });
+
+  contactSuccessModal?.addEventListener("click", (event) => {
+    if (!successDialog) return;
+    if (!successDialog.contains(event.target)) {
+      closeContactSuccessModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && contactSuccessModal && !contactSuccessModal.hidden) {
+      closeContactSuccessModal();
+    }
+  });
 
   if (formState && window.history.replaceState) {
     window.history.replaceState({}, "", window.location.pathname + window.location.hash);
