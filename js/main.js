@@ -11,8 +11,9 @@ const serviceShowcase = document.querySelector("[data-service-showcase]");
 const whyUs = document.querySelector(".why-us");
 const brandTransform = document.querySelector("[data-brand-transform]");
 const testimonialSection = document.querySelector("[data-testimonials]");
-const ctaBanner = document.querySelector("[data-cta-banner]");
+const ctaBanners = document.querySelectorAll("[data-cta-banner]");
 const hero = document.querySelector("[data-hero]");
+const formStatus = document.querySelector("[data-form-status]");
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 const setHeaderState = () => {
@@ -91,6 +92,27 @@ if ("IntersectionObserver" in window && revealItems.length) {
 yearTargets.forEach((target) => {
   target.textContent = String(new Date().getFullYear());
 });
+
+if (formStatus) {
+  const params = new URLSearchParams(window.location.search);
+  const formState = params.get("form");
+
+  if (formState === "success") {
+    formStatus.hidden = false;
+    formStatus.classList.add("form-status--success");
+    formStatus.textContent =
+      "Thanks. Your inquiry was sent successfully. We will continue the conversation by email.";
+  } else if (formState === "invalid" || formState === "error") {
+    formStatus.hidden = false;
+    formStatus.classList.add("form-status--error");
+    formStatus.textContent =
+      "We could not send your inquiry. Please check the required fields and try again, or email support@primesetltd.com.";
+  }
+
+  if (formState && window.history.replaceState) {
+    window.history.replaceState({}, "", window.location.pathname + window.location.hash);
+  }
+}
 
 const formatCountValue = (value, suffix = "", prefix = "", decimals = 0) =>
   `${prefix}${Number(value).toFixed(decimals)}${suffix}`;
@@ -177,7 +199,7 @@ if (serviceShowcase) {
         "Landing-page and form-flow alignment",
         "Budget and search-term cleanup",
         ],
-        link: "service-detail.html",
+        link: "paid-advertising.html",
         mediaSrc: "img/services/main-page/google-ads.jpg",
         mediaAlt: "Google Ads campaign management visual",
       },
@@ -192,7 +214,7 @@ if (serviceShowcase) {
         "Creative testing by audience and offer stage",
         "Signal cleanup and clearer paid social reporting",
         ],
-        link: "services.html",
+        link: "social-media-campaigns.html",
         mediaSrc: "img/services/main-page/meta-ads.jpg",
         mediaAlt: "Meta Ads campaign planning visual",
       },
@@ -207,7 +229,7 @@ if (serviceShowcase) {
         "Form-flow improvements and CTA clarity",
         "CRO testing priorities and path analysis",
         ],
-        link: "services.html",
+        link: "web-design-cro.html",
         mediaSrc: "img/services/main-page/landing.jpg",
         mediaAlt: "Landing page and CRO strategy visual",
       },
@@ -222,7 +244,7 @@ if (serviceShowcase) {
         "Commercial content briefs and page structure",
         "Technical fixes and internal linking improvements",
         ],
-        link: "services.html",
+        link: "seo.html",
         mediaSrc: "img/services/main-page/seo.jpg",
         mediaAlt: "SEO and commercial content planning visual",
       },
@@ -237,7 +259,7 @@ if (serviceShowcase) {
         "Looker Studio reporting for teams and leadership",
         "Attribution review across paid and organic traffic",
         ],
-        link: "services.html",
+        link: "analytics-reporting.html",
         mediaSrc: "img/services/main-page/analytics.jpg",
         mediaAlt: "Analytics and attribution reporting visual",
       },
@@ -252,7 +274,7 @@ if (serviceShowcase) {
         "Nurture sequencing by offer stage",
         "Retention touchpoints for return visits",
         ],
-        link: "services.html",
+        link: "email-automation.html",
         mediaSrc: "img/services/main-page/remarketing.jpg",
         mediaAlt: "Remarketing and retention campaign visual",
       },
@@ -621,7 +643,7 @@ if (brandTransform) {
       tag: "Growth Systems",
       title: "Lead flow architecture built around demand quality, not just volume.",
       copy: "We connect Google Ads, Meta Ads, landing pages, and reporting into one system so budget decisions become clearer and conversion efficiency improves.",
-      link: "services.html",
+      link: "brand-strategy.html",
       image: "img/home/gallery/growth.jpg",
       imageAlt: "Growth systems showcase",
       overview:
@@ -638,7 +660,7 @@ if (brandTransform) {
       tag: "Paid Media",
       title: "Search rebuild for a regional service brand.",
       copy: "Intent structure, landing-page alignment, and reporting cleanup that reduced wasted clicks and improved lead fit.",
-      link: "service-detail.html",
+      link: "paid-advertising.html",
       image: "img/home/gallery/paid.jpg",
       imageAlt: "Paid media showcase",
       overview:
@@ -655,7 +677,7 @@ if (brandTransform) {
       tag: "Analytics",
       title: "Reporting system rebuilt for leadership visibility.",
       copy: "GA4, GTM, attribution cleanup, and cleaner weekly decision signals for budget and pipeline reviews.",
-      link: "services.html",
+      link: "analytics-reporting.html",
       image: "img/home/gallery/analytics.jpg",
       imageAlt: "Analytics showcase",
       overview:
@@ -672,7 +694,7 @@ if (brandTransform) {
       tag: "Creative Testing",
       title: "Offer-led creative system rolled out across paid social.",
       copy: "Creative variations were structured around audience stage, offer clarity, and handoff into landing-page conversion paths.",
-      link: "services.html",
+      link: "social-media-campaigns.html",
       image: "img/home/gallery/creative.jpg",
       imageAlt: "Creative testing showcase",
       overview:
@@ -1087,7 +1109,7 @@ if (testimonialSection) {
     {
       caption: "A growth partner that brings clarity to every decision.",
       quote:
-        "Northstar Metric helped us stop treating Google Ads, Meta, and our landing pages as separate projects. Once the tracking and conversion flow were rebuilt, the quality of inbound leads improved and the team finally had one clear view of what was working.",
+        "PRIMESET LIMITED helped us stop treating Google Ads, Meta, and our landing pages as separate projects. Once the tracking and conversion flow were rebuilt, the quality of inbound leads improved and the team finally had one clear view of what was working.",
       name: "Amelia R.",
       role: "VP of Marketing, regional healthcare group",
     },
@@ -1101,7 +1123,7 @@ if (testimonialSection) {
     {
       caption: "Senior thinking, direct execution, no performance theater.",
       quote:
-        "We had worked with agencies that reported activity but not insight. Northstar Metric brought discipline to campaign structure, attribution, and creative testing, and it changed how confidently we could scale paid spend.",
+        "We had worked with agencies that reported activity but not insight. PRIMESET LIMITED brought discipline to campaign structure, attribution, and creative testing, and it changed how confidently we could scale paid spend.",
       name: "Lauren M.",
       role: "Director of Growth, B2B SaaS company",
     },
@@ -1187,29 +1209,34 @@ if (testimonialSection) {
   });
 }
 
-if (ctaBanner) {
-  const image = ctaBanner.querySelector("[data-cta-banner-image]");
-  const reducedMotion = reduceMotionQuery.matches;
+if (ctaBanners.length && window.gsap && !reduceMotionQuery.matches) {
+  const gsap = window.gsap;
+  const ScrollTrigger = window.ScrollTrigger;
 
-  if (image && window.gsap && !reducedMotion) {
-    const gsap = window.gsap;
-    const ScrollTrigger = window.ScrollTrigger;
+  if (ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
 
-    if (ScrollTrigger) {
-      gsap.registerPlugin(ScrollTrigger);
+    ctaBanners.forEach((ctaBanner) => {
+      const image = ctaBanner.querySelector("[data-cta-banner-image]");
+      if (!image) return;
+
+      gsap.set(image, {
+        yPercent: -8,
+        scale: 1.14,
+      });
 
       gsap.to(image, {
-        yPercent: 10,
-        scale: 1.12,
+        yPercent: 8,
+        scale: 1.18,
         ease: "none",
         scrollTrigger: {
           trigger: ctaBanner,
           start: "top bottom",
           end: "bottom top",
-          scrub: 0.9,
+          scrub: 1.1,
         },
       });
-    }
+    });
   }
 }
 

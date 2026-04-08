@@ -21,6 +21,27 @@ body.page-contact .form-grid {
   gap: 1rem;
 }
 
+body.page-contact .form-status {
+  margin-bottom: 1rem;
+  padding: 0.95rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid transparent;
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+body.page-contact .form-status--success {
+  color: #0f5d37;
+  background: rgba(25, 197, 111, 0.1);
+  border-color: rgba(25, 197, 111, 0.24);
+}
+
+body.page-contact .form-status--error {
+  color: #9b2133;
+  background: rgba(229, 72, 77, 0.1);
+  border-color: rgba(229, 72, 77, 0.22);
+}
+
 body.page-contact label {
   display: grid;
   gap: 0.45rem;
